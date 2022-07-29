@@ -71,14 +71,14 @@
             <div class="app-main">
                 <div class="index-content">
                     <div class="mod">
-                        <h1>公告</h1>
-                        {% if t_is_admin==True %}
-                        <button onclick="jump('/notice_edit')">编辑</button>
-                        {% endif %}
-                        <br>
-                        <div id="notice">
 
+
+                        <div id="notice">
+                            
                         </div>
+                        {% if t_is_admin==True %}
+                            <button onclick="jump('/notice_edit')">编辑</button>
+                        {% endif %}
                     </div>
                 </div>
             </div>
