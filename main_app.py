@@ -42,7 +42,7 @@ def edit():
         if not user_is_admin():
             return jsonify({'code':'1'})
         db_web.update_one({'type': 'notice'}, {'$set': {'content': request.form['content']}})
-        return jsonify({'code':'1'})
+        return jsonify({'code':'0'})
 
 def user_is_banned():
     username = session.get('username')
