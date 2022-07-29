@@ -74,7 +74,9 @@
 
 
                         <div id="notice">
+                            {% autoescaping false %}
                             {{ t_notice }}
+                            {% endautoescape %}
                         </div>
                         {% if t_is_admin==True %}
                             <button onclick="jump('/notice_edit')">编辑</button>
