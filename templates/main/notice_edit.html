@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑公告</title>
+    <script src="markdown-palettes.min.js"></script>
+    <link rel="stylesheet" href="markdown-palettes.css">
+    <script src="/static/user/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div style="height: 800px">
+        <div id="editor"></div>
+    </div>
+    <button onclick="submit()">submit</button>
+    <script>
+        var editor = new MarkdownPalettes('#editor');
+        editor.content = '{{ t_notice }}';
+        function submit(){
+            $.post('/edit', {
+                'type': 'notice',
+                'content': editor.content
+            }, function(message){
+                if(code.message == '0'){
+                    alert('提交成功');
+                    window.location.href='/';
+                }
+                if(code.message == '1'){
+                    alert('你有权限吗你，啊？');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+@font-face {
+    font-family: Sans-Regular;
+    src: url(/static/general/font/ClearSans-Regular-webfont.woff);
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #1587d4;
+}
+
+body {
+    background-color: #f0d9ff;
+    font-family: Sans-Regular;
+}
+
+div {
+    display: block;
+}
+
+ol, ul, li {
+    list-style-type: none;
+}
+
+nav {
+    background-image: #fff;
+    position: fixed;
+    width: 72px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 5px 5px 10px gray;
+    opacity: 0.7;
+    transition: 1s;
+    border-radius: 72px;
+    vertical-align: middle;
+    margin: 120px 0;
+}
+
+nav:hover{
+    opacity: 1.0;
+    box-shadow: 15px 15px 25px black;
+}
+
+/* classes */
+
+.mod {
+    background-color: #fff;
+    box-shadow: 5px 5px 10px #999;
+    min-height: 100px;
+    min-width: 100px;
+    z-index: 777;
+    border-radius: 5px;
+}
+
+.logo {
+    display: block;
+    box-sizing: border-box;
+    width: 72px;
+    text-align: center;
+    height: 72px;
+    overflow: hidden;
+    outline: 0;
+}
+
+.logo-long {
+    display: block;
+    width: 240px;
+    height: 72px;
+    margin-left: 30%;
+}
+
+.user-info {
+    margin-right: 30%;
+    margin-top: 24px;
+    float: right;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-left: 96px;
+    flex: 1;
+}
+
+.top-line {
+    height: 72px;
+    width: 100%;
+    background-color: #fff !important;
+    padding-left: 1em;
+    padding-right: 1em;
+    position: fixed;
+}
+
+.app-main {
+    flex: 1;
+    display: block;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.index-content {
+    display: block;
+    max-width: 1100px;
+    margin-top: 96px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inactive {
+    cursor: not-allowed;
+}
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-left: 96px;
+    flex: 1;
+}
+
+.top-line {
+    height: 72px;
+    width: 100%;
+    background-color: #d7b6e6;
+    padding-left: 1em;
+    padding-right: 1em;
+    position: fixed;
+}
+
+.app-main {
+    flex: 1;
+    display: block;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.index-content {
+    display: block;
+    max-width: 1100px;
+    margin-top: 96px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*p标签美化*/
+
+p.blue_lef{
+    border-left-style: solid;
+    border-left-width: 6px;
+    border-left-color: #1251a0;
+    background-image: linear-gradient(to right, #24c9bf, #06d8ff);
+    text-shadow: 1px 1px 1px gray;
+    opacity: 0.9;
+    font-size: 22px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 9px;
+}
+
+/*配色按钮组件*/
+
+button.sub{
+    padding: 5px 5px 5px 5px;
+    font-size: 24px;
+    color: #c5fff9;
+    background-color: #007b6e;
+    border: none;
+    transition: 0.5s;
+}
+
+button.sub:hover{
+    color: #007b6e;
+    background-color: #f0d9ff;
+}
+
+button.cute{
+    padding: 5px 5px 5px 5px;
+    font-size: 30px;
+    border: none;
+    background-image: #3365d3;
+    color: black;
+    transition: 0.4s;
+    font-family: "Courier New";
+    border-radius: 7px;
+}
+
+button.cute:hover{
+    background-color: #bebd00;
+    box-shadow: 0 0 7px #6a6a5a;
+}
+
+button.cute:active{
+    background-color: #81E2F2;
+    box-shadow: 0 0 13px #6a6a5a;
+}
+
+button.unsm{
+    padding: 5px 5px 5px 5px;
+    font-size: 30px;
+    border: none;
+    background-image: linear-gradient(to right, #3365d3, #41cde7);
+    color: black;
+    transition: 0.4s;
+    font-family: "Courier New";
+    border-radius: 7px;
+}
+
+button.unsm:hover{
+    background-image: linear-gradient(to right, #c1cb4c, #ecff20);
+    box-shadow: 0 0 7px #6a6a5a;
+}
+
+button.unsm:active{
+    background-image: linear-gradient(to right, #13aa0e, #20ef19);
+    box-shadow: 0 0 13px #6a6a5a;
+}
+
+button.threed{
+    position: relative;
+    background: #79e5e7;
+    border: none;
+    color: white;
+    padding: 15px 24px;
+    font-size: 1.4rem;
+    outline: none;
+    box-shadow: -6px 6px 0 #10bcc0;
+}
+
+button.threed::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: fixed;
+    top: 0;
+    left: -6px;
+    border: 6px solid transparent;
+    border-right: 6px solid #10bcc0;
+    border-left-width: 0px;
+}
+
+button.threed::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: fixed;
+    bottom: -6px;
+    right: 0;
+    border: 6px solid transparent;
+    border-top: 6px solid #10bcc0;
+    border-bottom-width: 0px;
+}
+
+button.threed:active {
+    background: #02a2a6;
+    top: 3px;
+    left: -3px;
+    box-shadow: -3px 3px 0 #10bcc0;
+}
+button.threed:active::before {
+    border: 3px solid transparent;
+    border-right: 3px solid #10bcc0;
+    border-left-width: 0px;
+    left: -3px;
+}
+
+button.threed:active::after {
+    border: 3px solid transparent;
+    border-top: 3px solid #10bcc0;
+    border-bottom-width: 0px;
+    bottom: -3px;
+}
+
+.box_p{
+    height: 60px;
+    width: 60px;
+    transition: 1s;
+}
+
+.box_p:hover{
+    background-color: #c83215;
+}
+
+.avater{
+    width: 70px;
+    z-index: 999999;
+    position: fixed;
+    right: 5px;
+    top: 2px;
+    height: 70px;
+}
+
+.dropdown{
+    transition-property: opacity;
+    transition: 0.2s;
+    opacity: 0.0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(128, 128, 128);
+    min-width: 96px;
+    min-height: 240px;
+}
+
+.loginbox {
+    width: 240px;
+    height: 540px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-120px;
+    margin-top:-270px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(128, 128, 128);
+    text-align: center;
+}
+
+.submit {
+    background-color: #00d9ff;
+    box-shadow: 5px 5px 10px rgb(128, 128, 128);
+    border-radius: 5px;
+}
+
+.submit:hover {
+    background-color: #1251a0;
+}
+
+.submit.login {
+    width: 220px;
+    text-align: center;
+}
+
+.logininput {
+    width: 220px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+}

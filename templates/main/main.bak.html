@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>主页</title>
+    <link rel="stylesheet" href="/static/main/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/main/css/common.css">
+    <link rel="stylesheet" href="/static/main/css/main.css">
+    <style>
+        #ndigit_n:hover,#ndigit_n:focus {
+            color: #407FFF;
+        }
+    </style>
+</head>
+<body>
+<div class="mask"></div>
+<div class="box">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="navbar-header col-md-8 col-lg-8">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand pl" href="javascript:;">
+                        <img class="hidden-md hidden-lg pull-left" height="60" src="/static/main/images/avatar.png"
+                             alt="">
+                        <div class="pull-left  mynav_leftuser pl">
+                            <!--<span>{{date}}</span>-->
+                            <div class="mynav_user">
+                                <!-- <img class="hidden-sm hidden-xs vm" height="60" src="/static/main/images/avatar.png"> -->
+                                <span class="welcomtitle">{{ t_username }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse mobiologinangregist" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            {% if t_is_login==False %}
+<!--                                <a class="loginOutBtn" href="/log">更新日志</a>-->
+<!--                                <a class="loginOutBtn" href="/notice">网站公告</a>-->
+                                <a class="loginBtn" href="/login">登录</a>/
+                                <a class="registBtn" href="/register">注册</a>
+                            {% else %}
+<!--                                <a class="loginOutBtn" href="/log">更新日志</a>-->
+<!--                                <a class="loginOutBtn" href="/notice">网站公告</a>-->
+                                <a class="loginOutBtn" href="/change_password">更改密码</a>
+                                <a class="loginOutBtn" href="/logout">退出登录</a>
+                            {% endif %}
+
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+<script src="/static/main/js/jquery-3.3.1.min.js"></script>
+<script src="/static/main/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

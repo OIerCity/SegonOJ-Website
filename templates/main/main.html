@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SegonOJ - 主页</title>
+    <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div>
+            <nav style="background-color: #fff;">
+
+
+                <a href="/">
+                    <div class="logo">
+                        <img src="/static/general/img/logo.png" alt="SegonOJ-Logo" width="72px" height="72px">
+                    </div>
+                </a>
+                <br>
+                <a class="nav-s">题目</a>
+                <br>
+                <a class="nav-s">题单</a>
+                <br>
+                <a class="nav-s">比赛</a>
+                <br>
+                <a class="nav-s">团队</a>
+                <br>
+                <a class="nav-s">讨论</a>
+                <br>
+                <a class="nav-s">排名</a>
+                <br>
+                <a class="nav-s">插件</a>
+                <br>
+                <a class="nav-s">应用</a>
+                <br>
+            </nav>
+            <div class="top-line">
+
+
+
+                <div class="user-info">
+                    {% if t_is_login==True %}
+                    <a onmouseenter="a(1)" onmouseleave="a(2)">{{ t_useravater }}</a>
+                    <div class="dropdown" id="dropdown" onmouseenter="a(3)" onmouseleave="a(4)">
+                        <span>
+
+                            <a style="color: #606060;" href="/logout">登出</a>
+                        </span><b>|</b>
+                    </div>
+
+                    {% else %}
+                    <a href="/login">登录</a>
+                    &nbsp;/&nbsp;
+                    <a href="/register">注册</a>
+                    {% endif %}
+                </div>
+
+                <div class="logo-long">
+                    <a href="/">
+                        <img src="/static/general/img/logo-long.png" alt="logo" width="240px" height="72px">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main-container">
+
+            <div class="app-main">
+                <div class="index-content">
+                    <div class="mod">
+                        <h1>公告</h1>
+                        {% if t_is_admin==True %}
+                        <button onclick="jump('/notice_edit')">编辑</button>
+                        {% endif %}
+                        <br>
+                        {{t_notice}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var c=0,d=0;
+        function a(t) {
+            if(t==1) {
+                d=1;
+                b(1);
+            }
+            if(t==2) {
+                setTimeout("b(2)", 1000);
+            }
+            if(t==3) {
+                c=1;
+                b(1);
+            }
+            if(t==4) {
+                c=0;
+                setTimeout("b(2)", 1000);
+            }
+        }
+        function b(t) {
+            if(t==1&&d==1){
+                document.getElementById("dropdown").style="opacity: 1.0; display:block;";
+            }
+            if(t==2){
+                if(c==0) {
+                    document.getElementById("dropdown").style="opacity: 0.0;";
+                    d=0;
+                    setTimeout(() => {
+                        document.getElementById("dropdown").style="opacity:0.0; display:none;"
+                    }, 1200);
+                }
+            }
+        }
+        function jump(t){
+            window.location.href=t;
+        }
+    </script>
+</body>
+
+</html>
