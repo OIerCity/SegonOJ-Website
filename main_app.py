@@ -34,7 +34,8 @@ def welcome():
 
 @app.route('/notice_edit')
 def notice_edit():
-    return render_template('main/notice_edit.html')
+    notice = find_webdb({'key': 'notice'})
+    return render_template('main/notice_edit.html',t_notice=notice)
 
 @app.route('/edit', methods=['POST'])
 def edit():
