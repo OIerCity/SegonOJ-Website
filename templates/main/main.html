@@ -76,7 +76,9 @@
                         <button onclick="jump('/notice_edit')">编辑</button>
                         {% endif %}
                         <br>
-                        {{t_notice}}
+                        <div id="notice">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,6 +86,7 @@
     </div>
     <script>
         var c=0,d=0;
+        document.getElementById('notice').innerHTML='{{ t_notice }}'
         function a(t) {
             if(t==1) {
                 d=1;
