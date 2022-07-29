@@ -71,5 +71,5 @@ def find_user(condition):
     return user_list
 
 def find_webdb(condition):
-    res = db_web.find(condition)
+    res = db_web.find_one(condition)
     return res
