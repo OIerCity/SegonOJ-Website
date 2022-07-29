@@ -26,7 +26,7 @@ def welcome():
     if user_is_admin():
         is_admin = True
     notice = find_webdb({'key': 'notice'})
-    notice['html'] = markdown(
+    notice['html'] = markdown.markdown(
         notice['content'], extensions=["fenced_code", "tables", "codehilite"]
     )
     return render_template('main/main.html', t_is_login=is_login, t_useravater=username, t_notice=notice['html'], t_is_admin=is_admin)
