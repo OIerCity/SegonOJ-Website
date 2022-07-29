@@ -74,7 +74,7 @@
 
 
                         <div id="notice">
-                            {{ t_notice }}
+                            
                         </div>
                         {% if t_is_admin==True %}
                             <button onclick="jump('/notice_edit')">编辑</button>
@@ -86,6 +86,7 @@
     </div>
     <script>
         var c = 0, d = 0;
+        document.getElementById('notice').innerHTML = htmlRestore(`{{ t_notice }}`);
         function a(t) {
             if (t == 1) {
                 d = 1;
@@ -119,6 +120,19 @@
         }
         function jump(t) {
             window.location.href = t;
+        }
+        function htmlRestore(str) {
+            var s = ``;
+            if (str.length === 0) {
+                return ``;
+            }
+            s = str.replace(/&amp;/g, "&");
+            s = s.replace(/&lt;/g, "<");
+            s = s.replace(/&gt;/g, ">");
+            s = s.replace(/&nbsp;/g, " ");
+            s = s.replace(/&#39;/g, "\'");
+            s = s.replace(/&quot;/g, "\"");
+            return s;
         }
     </script>
 </body>
