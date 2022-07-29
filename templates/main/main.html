@@ -110,7 +110,7 @@
             }
             if (t == 2) {
                 if (c == 0) {
-                    document.getElementById("dropdown").style = "opacity: 0.0;";
+                    if(document.getElementById("dropdown").style != "opacity:0.0; display:none;") document.getElementById("dropdown").style = "opacity: 0.0;";
                     d = 0;
                     setTimeout(() => {
                         document.getElementById("dropdown").style = "opacity:0.0; display:none;"
