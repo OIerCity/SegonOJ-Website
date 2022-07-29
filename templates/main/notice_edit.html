@@ -21,11 +21,11 @@
                 'type': 'notice',
                 'content': editor.content
             }, function(message){
-                if(code.message == '0'){
+                if(message.code == '0'){
                     alert('提交成功');
                     window.location.href='/';
                 }
-                if(code.message == '1'){
+                if(message.code == '1'){
                     alert('你有权限吗你，啊？');
                 }
             });
