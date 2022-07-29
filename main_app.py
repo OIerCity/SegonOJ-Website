@@ -25,7 +25,7 @@ def welcome():
     is_admin = False
     if user_is_admin():
         is_admin = True
-    notice = find_webdb({'key': 'notice'})
+    notice = find_webdb({'type': 'notice'})
     notice['html'] = markdown.markdown(
         notice['content'], extensions=["fenced_code", "tables", "codehilite"]
     )
@@ -34,7 +34,7 @@ def welcome():
 
 @app.route('/notice_edit')
 def notice_edit():
-    notice = find_webdb({'key': 'notice'})
+    notice = find_webdb({'type': 'notice'})
     return render_template('main/notice_edit.html',t_notice=notice['content'])
 
 @app.route('/edit', methods=['POST'])
