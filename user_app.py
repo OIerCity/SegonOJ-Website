@@ -5,7 +5,7 @@ from sqlite3 import Timestamp
 from flask import Blueprint, render_template, request, redirect, session, jsonify
 import pymongo
 import hashlib
-from email.mime.text import smtplib
+import smtplib
 from email.header import MIMEText
 from email.header import Header
 from random import randint
