@@ -6,7 +6,7 @@ from flask import Blueprint, render_template, request, redirect, session, jsonif
 import pymongo
 import hashlib
 import smtplib
-from email.header import MIMEText
+from email.mime.text import MIMEText
 from email.header import Header
 from random import randint
 
