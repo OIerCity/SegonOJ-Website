@@ -17,73 +17,78 @@
 
                 <a href="/">
                     <div class="logo">
-                        <img src="/static/general/img/logo.png" alt="SegonOJ-Logo" width="72px" height="72px">
+                        <img src="/general/static/img/logo.png" alt="SegonOJ-Logo" width="72px" height="72px">
                     </div>
                 </a>
+
                 <br>
-                <a class="nav-s">题目</a>
-                <br>
-                <a class="nav-s">题单</a>
-                <br>
-                <a class="nav-s">比赛</a>
-                <br>
-                <a class="nav-s">团队</a>
-                <br>
-                <a class="nav-s">讨论</a>
-                <br>
-                <a class="nav-s">排名</a>
-                <br>
-                <a class="nav-s">插件</a>
-                <br>
-                <a class="nav-s">应用</a>
-                <br>
+                <a class="links" href="/problem">题目</a><br>
+                <a class="links" href="/training">题单</a><br>
+                <a class="links" href="/contest">比赛</a><br>
+                <a class="links" href="/team">团队</a><br>
+                <a class="links" href="/discuss">讨论</a><br>
+                <a class="links" href="/rank">排名</a><br>
+                <a class="links" href="/plug-in">插件</a><br>
+                <a class="links" href="/apps">应用</a><br>
+
             </nav>
             <div class="top-line">
-
-
-
                 <div class="user-info">
-                    {% if t_is_login==True %}
-                    <a onmouseenter="a(1)" onmouseleave="a(2)">{{ t_useravater }}</a>
+                    {% if t_is_login == False %}
+                    <a class="sh" href="/login">登录</a>
+                    <div style="float: left; font-size: 24px; color: gray; margin-left: 8px;"> / </div>
+                    <a class="sh" href="/register">注册</a>
+                    {% else %}
+                    <a onmouseenter="a(1)" onmouseleave="a(2)"><img src="{{ t_user_avater }}" alt="头像" width="48px" height="48px" style="border-radius: 12px;" class="avater"></a>
                     <div class="dropdown" id="dropdown" onmouseenter="a(3)" onmouseleave="a(4)">
                         <span>
 
-                            <a style="color: #606060;" href="/logout">登出</a>
+                            <a style="color:#606060;" href="/logout">登出</a>
                         </span><b>|</b>
                     </div>
-
-                    {% else %}
-                    <a href="/login">登录</a>
-                    &nbsp;/&nbsp;
-                    <a href="/register">注册</a>
                     {% endif %}
                 </div>
-
                 <div class="logo-long">
                     <a href="/">
                         <img src="/static/general/img/logo-long.png" alt="logo" width="240px" height="72px">
                     </a>
                 </div>
+                
             </div>
         </div>
         <div class="main-container">
 
             <div class="app-main">
                 <div class="index-content">
+                    <br>
                     <div class="mod">
-
-
-                        <div id="notice">
-                            
-                        </div>
-                        {% if t_is_admin==True %}
-                            <button onclick="jump('/notice_edit')">编辑</button>
+                        <br>
+                        <span style="font-size: 32px;">公告栏 / Announcement</span>
+                        <br><br>
+                        <div id="notice"></div>
+                        {% if t_is_admin == True %}
+                        <br><button class="rbut" onclick="edit_notice();">编辑</button>
                         {% endif %}
+                        <br><br>
                     </div>
                 </div>
+                <div class="index-content">
+                    <div class="mod">
+                        <br>
+                        <span style="font-size: 32px;">题目搜索 / Problem Search</span><br><br>
+
+                            <input type="code" id="username" placeholder="题目编号" class="iptlong">
+                            <br><br>
+                            <button class="rbut" id="submit">就要这题qwq</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="rbut" id="submit">随机一下qwq</button>
+                            <br><br>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
+    <!-- 次掉6872 -->
     <script>
         var c = 0, d = 0;
         document.getElementById('notice').innerHTML = htmlRestore(`{{ t_notice }}`);
@@ -133,5 +138,3 @@
         }
     </script>
 </body>
-
-</html>
