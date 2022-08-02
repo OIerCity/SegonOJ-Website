@@ -46,7 +46,7 @@ def register_send():
     email = request.form['email']
     if len(find_user({'email': email})) == 1:
         return jsonify({'code': '2'})
-    status, code = send_mail([email])
+    status, code = send_mail(email)
     if status:
         v_email = c_verify.findone({'email': email})
         if v_email['used'] == 'yes':
@@ -226,10 +226,10 @@ def check_user():
 def send_mail(ereciever):
     try:
         code = randint(1000000,9999999)
-        emsg = MIMEText(msg + ereciever[0] + '''&code=''' + str(code) + '''</p>''', 'html', 'utf-8')
-        emsg['From'] = Header("SegonOJ", 'utf-8')
-        emsg['To'] = Header("注册邮箱", 'utf-8')
-        emsg['Subject'] = Header('SegonOJ - 注册邮箱验证', 'utf-8')
+        emsg = MIMEText(msg + ereciever + '''&code=''' + str(code) + '''</p>''', 'html')
+        emsg['From'] = Header("SegonOJ")
+        emsg['To'] = Header(ereciever)
+        emsg['Subject'] = Header('SegonOJ - 注册邮箱验证')
         smtpObj.sendmail(esender, ereciever, emsg.as_string())
         return True, str(code)
     except:
