@@ -12,7 +12,7 @@ from random import randint
 
 msg = '''
 <p>您好，您的SegonOJ注册链接是：</p>
-<p>https://segonoj.site/register_verify?email=
+<p>http://segonoj.site/register_verify?email=
 '''
 esender = 'seojhelper@hotmail.com'
 epwd = 'M=GC/J=|)>uY}d_'
@@ -54,10 +54,10 @@ def register_send():
                 return jsonify({'code': '-1'})
             if datetime.timestamp(datetime.now())-v_email['timestamp'] <= 60:
                 return jsonify({'code': '3'})
-            c_verify.update_one({'email': email}, {'$set': {'verify_code': code, 'passed': 'no'}})
+            c_verify.update_one({'email': email}, {'$set': {'verify_code': code, 'passed': 'no', 'timestamp': datetime.timestamp(datetime.now())}})
             return jsonify({'code': '0'})
         else:
-            c_verify.insert_one({'email': email, 'verify_code': code, 'passed': 'no', 'used': 'no'})
+            c_verify.insert_one({'email': email, 'verify_code': code, 'passed': 'no', 'used': 'no', 'timestamp': datetime.timestamp(datetime.now())})
             return jsonify({'code': '0'})
     else:
         return jsonify({'code': '1'})
