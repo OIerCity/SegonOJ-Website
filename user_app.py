@@ -66,7 +66,7 @@ def register_send():
 def register_verify():
     email = request.args['email']
     verify_code = request.args['code']
-    e_verify = c_verify.find_one({'email': email, 'code': verify_code})
+    e_verify = c_verify.find_one({'email': str(email), 'code': str(verify_code)})
     if e_verify == None:
         return render_template('user/register.html',t_found=False)
     elif e_verify['used'] == 'yes':
