@@ -48,7 +48,7 @@ def register_send():
         return jsonify({'code': '2'})
     status, code = send_mail(email)
     if status:
-        v_email = c_verify.findone({'email': email})
+        v_email = c_verify.find_one({'email': email})
         if v_email['used'] == 'yes':
             return jsonify({'code': '-1'})
         if v_email is not None:
