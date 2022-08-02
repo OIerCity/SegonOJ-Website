@@ -68,12 +68,12 @@ def register_verify():
     verify_code = request.args['code']
     e_verify = c_verify.find_one({'email': email, 'code': verify_code})
     if e_verify == None:
-        return render_template('user/register',t_found=False)
+        return render_template('user/register.html',t_found=False)
     elif e_verify['used'] == 'yes':
-        return render_template('user/register',t_found=False,t_message='这邮箱被用过了')
+        return render_template('user/register.html',t_found=False,t_message='这邮箱被用过了')
     else:
         c_verify.update_one({'email': email, 'code': verify_code}, {'$set': {'passed': 'yes'}})
-        return render_template('user/register',t_found=True)
+        return render_template('user/register.html',t_found=True)
 
 @user_app.route('/register_check', methods=['POST'])
 def register_check():
