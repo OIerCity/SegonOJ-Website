@@ -17,7 +17,7 @@ msg = '''
 esender = 'seojhelper@hotmail.com'
 epwd = 'M=GC/J=|)>uY}d_'
 
-smtpObj = smtplib.SMTP_SSL('smtp.office365.com', 587)
+smtpObj = smtplib.SMTP('smtp.office365.com', 587)
 smtpObj = smtplib.elho()
 smtpObj = smtplib.starttls()
 smtpObj.login(esender, epwd)
