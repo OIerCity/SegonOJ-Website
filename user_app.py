@@ -49,9 +49,9 @@ def register_send():
     status, code = send_mail(email)
     if status:
         v_email = c_verify.find_one({'email': email})
-        if v_email['used'] == 'yes':
-            return jsonify({'code': '-1'})
         if v_email is not None:
+            if v_email['used'] == 'yes':
+                return jsonify({'code': '-1'})
             if datetime.timestamp(datetime.now())-v_email['timestamp'] <= 60:
                 return jsonify({'code': '3'})
             c_verify.update_one({'email': email}, {'$set': {'verify_code': code, 'passed': 'no'}})
