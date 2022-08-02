@@ -18,8 +18,8 @@ esender = 'seojhelper@hotmail.com'
 epwd = 'M=GC/J=|)>uY}d_'
 
 smtpObj = smtplib.SMTP('smtp.office365.com', 587)
-smtpObj = smtplib.ehlo()
-smtpObj = smtplib.starttls()
+smtpObj.ehlo()
+smtpObj.starttls()
 smtpObj.login(esender, epwd)
 
 user_app = Blueprint('user_app', __name__)
