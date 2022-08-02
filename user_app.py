@@ -14,7 +14,7 @@ msg = '''
 <p>您好，您的SegonOJ注册链接是：</p>
 <p>https://segonoj.site/register_verify?email=
 '''
-esender = 'seojhelper2022@hotmail.com'
+esender = 'seojhelper@hotmail.com'
 epwd = 'M=GC/J=|)>uY}d_'
 
 smtpObj = smtplib.SMTP('smtp.office365.com', 587)
