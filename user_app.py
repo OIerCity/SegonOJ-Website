@@ -66,9 +66,9 @@ def register_send():
 def register_verify():
     email = request.args['email']
     verify_code = request.args['code']
-    e_verify = c_verify.find_one({'email': str(email), 'code': str(verify_code)})
+    e_verify = c_verify.find_one({'email': str(email), 'verify_code': str(verify_code)})
     if e_verify == None:
-        return render_template('user/register.html',t_found=False, t_message=email + verify_code)
+        return render_template('user/register.html',t_found=False)
     elif e_verify['used'] == 'yes':
         return render_template('user/register.html',t_found=False,t_message='这邮箱被用过了')
     else:
