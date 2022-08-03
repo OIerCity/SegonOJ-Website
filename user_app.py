@@ -73,7 +73,7 @@ def register_verify():
         return render_template('user/register.html',t_found=False,t_message='这邮箱被用过了')
     else:
         c_verify.update_one({'email': email, 'verify_code': verify_code}, {'$set': {'passed': 'yes'}})
-        return render_template('user/register.html',t_found=True)
+        return render_template('user/register.html',t_found=True, t_email=email, t_verify_code=verify_code)
 
 @user_app.route('/register_check', methods=['POST'])
 def register_check():
