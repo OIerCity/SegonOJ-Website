@@ -78,12 +78,15 @@ def register_verify():
 @user_app.route('/register_check', methods=['POST'])
 def register_check():
     username = request.form['username']
-    password = request.form['password']
+    pwd = request.form['password']
     email = request.form['email']
+    verify_code = request.form['verify_code']
     banned_str = "~`!@#$%^&*()-=+{}[];:\'\"<>,.?\\|/"
-    e_verify = c_verify.find_one({'email': email, 'passed': 'yes', 'used': 'no'})
+    e_verify = c_verify.find_one({'email': email, 'passed': 'yes', 'used': 'no', 'verify_code': verify_code})
     if e_verify is None:
         return jsonify({'code': '1'})
+    if len(username) == 0:
+        return jsonify({'code': '-1'})
     for i in banned_str:
         if i in username:
             return jsonify({'code': '2'})
@@ -101,12 +104,11 @@ def register_check():
             last_list.append(item)
         last_uid = last_list[0]['uid']
         c_last.update_one({}, {"$set": {'uid': last_uid + 1}})
-        pwd = encrypt(password)
         user = {'username': username, 'password': pwd, 'state': 'normal', 'uid': last_uid + 1, 'email': email}
         insert_user(user)
-        return jsonify({'code': '1'})
+        return jsonify({'code': '0'})
     else:
-        return jsonify({'code': '2'})
+        return jsonify({'code': '3'})
     
 
 
