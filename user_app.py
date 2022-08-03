@@ -106,6 +106,7 @@ def register_check():
         c_last.update_one({}, {"$set": {'uid': last_uid + 1}})
         user = {'username': username, 'password': pwd, 'state': 'normal', 'uid': last_uid + 1, 'email': email}
         insert_user(user)
+        c_verify.update_one({'email': email, 'passed': 'yes', 'used': 'no', 'verify_code': verify_code},{"$set": {'used': 'yes'}})
         return jsonify({'code': '0'})
     else:
         return jsonify({'code': '3'})
