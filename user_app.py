@@ -232,7 +232,7 @@ def send_mail(ereciever):
 
     try:
         for i in range(10):
-            code += base_str[randint(0, 51)]
+            code += base_str[randint(0, 61)]
         
         emsg = MIMEText(msg + ereciever + '''&code=''' + code + '''</p>''', 'html')
         emsg['From'] = Header("SegonOJ")
