@@ -227,9 +227,14 @@ def check_user():
     return False
 
 def send_mail(ereciever):
+    code = ''
+    base_str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+
     try:
-        code = randint(1000000,9999999)
-        emsg = MIMEText(msg + ereciever + '''&code=''' + str(code) + '''</p>''', 'html')
+        for i in range(10):
+            code += base_str[randint(0, 51)]
+        
+        emsg = MIMEText(msg + ereciever + '''&code=''' + code + '''</p>''', 'html')
         emsg['From'] = Header("SegonOJ")
         emsg['To'] = Header(ereciever)
         emsg['Subject'] = Header('SegonOJ - 注册邮箱验证')
@@ -245,4 +250,3 @@ def send_mail(ereciever):
 @user_app.route('/user/<int:uid>')
 def user_page():
     return render_template('user/selfpage.html')
-
