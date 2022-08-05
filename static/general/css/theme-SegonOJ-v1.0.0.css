@@ -441,7 +441,7 @@ button.threed:active::after {
     box-sizing: border-box;
 }
 
-.registerput {
+.registerinput {
     width: 220px;
     height: 30px;
     border: 1px solid rgba(0, 0, 0, 0.6);
