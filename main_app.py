@@ -14,7 +14,7 @@ db_web = db['web']
 
 @app.route('/favicon.ico')#设置icon
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static/general/img'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 def welcome():
