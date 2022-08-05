@@ -16,11 +16,6 @@ msg = '''
 esender = 'seojhelper@hotmail.com'
 epwd = 'M=GC/J=|)>uY}d_'
 
-smtpObj = smtplib.SMTP('smtp.office365.com', 587)
-smtpObj.ehlo()
-smtpObj.starttls()
-smtpObj.login(esender, epwd)
-
 user_app = Blueprint('user_app', __name__)
 
 client = pymongo.MongoClient("mongodb://localhost:27017")
@@ -227,6 +222,10 @@ def check_user():
     return False
 
 def send_mail(ereciever):
+    smtpObj = smtplib.SMTP('smtp.office365.com', 587)
+    smtpObj.ehlo()
+    smtpObj.starttls()
+    smtpObj.login(esender, epwd)
     code = ''
     base_str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
 
@@ -239,8 +238,10 @@ def send_mail(ereciever):
         emsg['To'] = Header(ereciever)
         emsg['Subject'] = Header('SegonOJ - 注册邮箱验证')
         smtpObj.sendmail(esender, ereciever, emsg.as_string())
+        smtpObj.quit()
         return True, str(code)
     except:
+        smtpObj.quit()
         return False, str(code)
 
 '''
