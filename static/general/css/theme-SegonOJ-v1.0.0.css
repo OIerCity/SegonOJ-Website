@@ -391,7 +391,7 @@ button.threed:active::after {
 .rbut{
     font-family: fnt;
     border-radius: 10px;
-    height: 30px;
+    height: 35px;
     text-align: center;
     border: none;
     transition: 0.2s;
