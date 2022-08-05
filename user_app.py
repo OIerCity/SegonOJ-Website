@@ -231,7 +231,7 @@ def send_mail(ereciever):
     base_str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
 
     try:
-        for i in range(10):
+        for i in range(20):
             code += base_str[randint(0, 61)]
         
         emsg = MIMEText(msg + ereciever + '''&code=''' + code + '''</p>''', 'html')
