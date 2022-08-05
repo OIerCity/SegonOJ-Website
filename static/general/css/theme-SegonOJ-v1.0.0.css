@@ -25,7 +25,6 @@ nav {
     background-image: linear-gradient(white, #b8faff);
     position: fixed;
     width: 72px;
-    height: 430px;
     display: flex;
     flex-direction: column;
     text-align: center;
