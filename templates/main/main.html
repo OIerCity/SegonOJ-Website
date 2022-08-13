@@ -7,6 +7,72 @@
     <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+        integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+        integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+        integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+        crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                // customised options
+                // • auto-render specific keys, e.g.:
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: "\\begin{equation}", right: "\\end{equation}", display: true },
+                    { left: "\\begin{align}", right: "\\end{align}", display: true },
+                    { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+                    { left: "\\begin{gather}", right: "\\end{gather}", display: true },
+                    { left: "\\begin{CD}", right: "\\end{CD}", display: true },
+                    { left: "\\[", right: "\\]", display: true }
+                ],
+                // • rendering keys, e.g.:
+                throwOnError: false
+            });
+        });
+    </script>
+    <style>
+        .my-content ul {
+            margin-left: 20px
+        }
+
+        .my-content ul li {
+            list-style: outside disc;
+        }
+
+        .my-content ol {
+            margin-left: 20px
+        }
+
+        .my-content ol li {
+            list-style: outside decimal;
+        }
+
+        .my-content table tr th,
+        .my-content table tr td {
+            padding: 6px 13px;
+            border: 1px solid #ddd;
+        }
+
+        form {
+            line-height: inherit;
+        }
+
+        .my-content a {
+            text-decoration: underline;
+            color: blue;
+        }
+
+        .my-content .codehilite pre {
+            font-size: 120%;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,14 +125,15 @@
                         <br>
                         <span style="font-size: 32px;">题目搜索 / Problem Search</span><br><br>
 
-                            <input type="code" id="username" placeholder="题目编号" class="iptlong">
-                            <br><br>
-                            <button class="rbut" id="submit">就要这题qwq</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="rbut" id="submit">随机一下qwq</button>
-                            <br><br>
+                        <input type="code" id="username" placeholder="题目编号" class="iptlong">
+                        <br><br>
+                        <button class="rbut"
+                            id="submit">就要这题qwq</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="rbut" id="submit">随机一下qwq</button>
+                        <br><br>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
