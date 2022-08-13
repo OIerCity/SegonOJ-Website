@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>SegonOJ - 主页</title>
+    <title>SegonOJ - 登录</title>
     <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
     <script src="/static/user/js/jquery-3.3.1.min.js"></script>
     <script src="/static/user/js/md5.js"></script>
@@ -38,38 +38,25 @@
                 <a class="nav-s">应用</a>
                 <br>
             </nav>
-            <div class="top-line">
-
-
-
-                <div class="user-info">
-                    <a href="/login">登录</a>
-                    &nbsp;/&nbsp;
-                    <a href="/register">注册</a>
-                </div>
-
-                <div class="logo-long">
-                    <a href="/">
-                        <img src="/static/general/img/logo-long.png" alt="logo" width="240px" height="72px">
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="main-container">
-
             <div class="app-main">
                 <div class="index-content">
                     <div class="loginbox">
+                        <br><br>
+                        <h3>登录</h3>
+                        <br><br>
                         <input type="text" id="username" placeholder="用户名" class="logininput">
-                        <br>
+                        <br><br>
                         <input type="password" id="password" placeholder="密码" class="logininput">
-                        <br>
-                        <button class="submit login" id="submit">登陆</button>
+                        <br><br>
+                        <button class="submit login" id="submit">登录</button>
+                        <br><br>
+                        <h5>没有账号？<a href="/register">注册</a></h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <script>
         document.getElementById("submit").onclick = function () {
             $.post("/login_check", {

@@ -1,8 +1,8 @@
-from distutils import extension
-from flask import Flask, render_template, session, request, jsonify
+from flask import Flask, render_template, session, request, jsonify, send_from_directory
 from user_app import user_app
 import pymongo
 import markdown
+import os
 
 app = Flask(__name__)
 app.secret_key = 'h4qfibuardfautrr8tdd5i8v7ah72d'
@@ -11,6 +11,10 @@ app.register_blueprint(user_app)
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db = client['onlinejudge']
 db_web = db['web']
+
+@app.route('/favicon.ico')#设置icon
+def favicon():
+    return send_from_directory(os.path.join('/home/web', 'static'),'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 def welcome():
@@ -25,17 +29,16 @@ def welcome():
     is_admin = False
     if user_is_admin():
         is_admin = True
-    notice = find_webdb({'key': 'notice'})
-    for item in notice:
-        item = markdown.markdown(
-            item['content'], extensions=["fenced_code", "tables", "codehilite"]
-        )
-    return render_template('main/main.html', t_is_login=is_login, t_useravater=username, t_notice=notice, t_is_admin=is_admin)
+    notice = find_webdb({'type': 'notice'})
+    notice = markdown.markdown(
+        notice['content'], extensions=["fenced_code", "tables", "codehilite"]
+    )
+    return render_template('main/main.html', t_is_login=is_login, t_notice=notice['html'], t_is_admin=is_admin)
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
 @app.route('/notice_edit')
 def notice_edit():
-    notice = find_webdb({'key': 'notice'})
+    notice = find_webdb({'type': 'notice'})
     return render_template('main/notice_edit.html',t_notice=notice['content'])
 
 @app.route('/edit', methods=['POST'])

@@ -15,7 +15,7 @@
     <button onclick="submit()">submit</button>
     <script>
         var editor = new MarkdownPalettes('#editor');
-        editor.content = '{{ t_notice }}';
+        editor.content = `{{ t_notice }}`;
         function submit(){
             $.post('/edit', {
                 'type': 'notice',
