@@ -26,10 +26,11 @@ def welcome():
     if user_is_admin():
         is_admin = True
     notice = find_webdb({'key': 'notice'})
-    notice['html'] = markdown.markdown(
-        notice['content'], extensions=["fenced_code", "tables", "codehilite"]
-    )
-    return render_template('main/main.html', t_is_login=is_login, t_useravater=username, t_notice=notice['html'], t_is_admin=is_admin)
+    for item in notice:
+        item = markdown.markdown(
+            item['content'], extensions=["fenced_code", "tables", "codehilite"]
+        )
+    return render_template('main/main.html', t_is_login=is_login, t_useravater=username, t_notice=notice, t_is_admin=is_admin)
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
 @app.route('/notice_edit')
