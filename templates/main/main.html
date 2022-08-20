@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SegonOJ - 主页</title>
-    <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
+    <link rel="stylesheet" type="text/css" href="general/css/theme-SegonOJ-v1.0.0.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
@@ -78,30 +78,62 @@
 <body>
     <div class="app">
         <div>
-            <nav style="background-color: #fff;">
+            <nav style="background-color: #fff; width: 100%;">
+                <div class="logo-long">
+                    <span>
+                        <a href="/">
+                            <img src="general/img/logo-long.png" alt="SegonOJ-Logo" height="72" width="221">
+                        </a>
 
-
-                <a href="/">
-                    <div class="logo">
-                        <img src="/static/general/img/logo.png" alt="SegonOJ-Logo" width="72px" height="72px">
-                    </div>
+                    </span>
+                </div>
+                <img src="general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="general/img/icon/problem.png" alt="problem" height="30" width="30">
                 </a>
-
-                <br>
-                <a class="links" href="/problem">题目</a><br>
-                <a class="links" href="/training">题单</a><br>
-                <a class="links" href="/contest">比赛</a><br>
-                <a class="links" href="/team">团队</a><br>
-                <a class="links" href="/discuss">讨论</a><br>
-                <a class="links" href="/rank">排名</a><br>
-                <a class="links" href="/plug-in">插件</a><br>
-                <a class="links" href="/apps">应用</a><br><br>
-                {% if t_is_login == False %}
-                <a class="links" href="/login">登录</a><br>
-                <a class="links" href="/register">注册</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="general/img/icon/problemset.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="general/img/icon/ranks.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="general/img/icon/discuss.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="general/img/icon/app.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if t_user_login %}
+                <div class="user-info">
+                    <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
+                    {% if t_userhavebadge == True %}
+                    <span class="badge sgoj-{{t_usercolor}}">&nbsp;{{ t_userbadge }}&nbsp;</span>
+                    {% endif %}
+                </div>
                 {% else %}
-                <a class="links" href="/logout">登出</a><br>
+                <div class="user-info">
+                    <a href="/login">登录</a>
+                    &nbsp;/&nbsp;
+                    <a href="/register">注册</a>
+                </div>
                 {% endif %}
+
+
+
             </nav>
         </div>
         <div class="main-container">
@@ -109,31 +141,405 @@
             <div class="app-main">
                 <div class="index-content">
                     <br>
-                    <div class="mod">
-                        <br>
-                        <span style="font-size: 32px;">公告栏 / Announcement</span>
-                        <br><br>
-                        <div id="notice"></div>
-                        {% if t_is_admin == True %}
-                        <br><button class="rbut" onclick="edit_notice();">编辑</button>
-                        {% endif %}
-                        <br><br>
+                    <div class="mod" style="height:auto;">
+                        <a><img src="general/img/ad.png" style="border-radius:15px;" width="400px" height="200px"></a>
+                        <div style="display: inline-block; float: right;text-align: center;">
+                            <div class="user-info">
+                                <span class="sgoj-purple">6872</span>
+                                <span class="badge sgoj-purple">&nbsp;Sestt&nbsp;</span>
+                            </div>
+                            &nbsp;
+                            <span style="color:blue;font-size: 24px;">的一天</span>
+
+                            <br>
+                            <table>
+                                <tr>
+                                    <td style="vertical-align: top;text-align: center;">
+                                        <b>
+                                            <div style="display: inline-block;line-height:22px;">
+                                                <span style="font-size: 18px;">你今天刷了多少题？</span>
+                                                <br>
+                                                <span style="font-size: 18px;">你离目标还有多少？</span>
+                                            </div>
+                                            <br>
+                                        </b>
+                                        <table style="margin: 0 auto;">
+                                            <img src="general/img/icon/fg2.png" class="fg"
+                                                style="top:235px;margin-left: -15px;">
+                                            <tr>
+                                                <td><span style="color:lime;font-size: 36px;">5</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <span style="color:gray;font-size: 24px;">5</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="vertical-align: top;">
+                                        <b><span>你的卷值有这么多</span></b>
+                                        <br>
+                                        <span style="font-size: 36px;text-align: center;color:#FFC300">2022</span>
+                                        <br>
+                                        <span style="font-style:italic;float:right;color: #f00;">(-154)</span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <a style="text-align: center;color:lime">查看你今天的运势>></a>
+                        </div>
                     </div>
                 </div>
                 <div class="index-content">
-                    <div class="mod">
-                        <br>
-                        <span style="font-size: 32px;">题目搜索 / Problem Search</span><br><br>
-
-                        <input type="code" id="username" placeholder="题目编号" class="iptlong">
-                        <br><br>
-                        <button class="rbut"
-                            id="submit">就要这题qwq</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="rbut" id="submit">随机一下qwq</button>
-                        <br><br>
+                    <div class="mod" style="height:auto;">
+                        <table cellpadding="15px">
+                            <tr>
+                                <td>
+                                    <table cellpadding="10px">
+                                        <span style="font-size:36px;">讨论</span> / Discuss
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span class="sgoj-red"
+                                                                    style="font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span class="sgoj-orange"
+                                                                    style="font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title fqb">
+                                                        <a style="color:white;text-align: left;">举报 建议禁言</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">反馈版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span class="sgoj-green"
+                                                                    style="font-size:18px;">2735abc</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">262620zzj 这个人wyytl</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">857857条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span class="sgoj-blue"
+                                                                    style="font-size:18px;">Cindy姚</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title xsb">
+                                                        <a style="color:white;text-align: left;">I AK IOI</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">学术版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span class="sgoj-purple"
+                                                                    style="font-size:18px;">Caca_Condy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">我爱6872!</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">114514条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span class="sgoj-purple"
+                                                                    style="font-size:18px;">小杨小小杨</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title zwb">
+                                                        <a style="color:white;text-align: left;">玲酱可爱</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">站务版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">Apathy_Cui</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">玲酱怎么这么强而且可爱啊...</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">2022条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span class="sgoj-green"
+                                                                    style="font-size:18px;">chenyuer</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title hsc">
+                                                        <a style="color:white;text-align: left;">说句闲话</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">划水池</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span class="sgoj-green"
+                                                                    style="font-size:18px;">西市骤雨</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">研究柯学的最好方式就是看...</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">998244353条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span class="sgoj-purple"
+                                                                    style="font-size:18px;">6872</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title hsc">
+                                                        <a style="color:white;text-align: left;">我要制裁极域</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">划水池</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span class="sgoj-green"
+                                                                    style="font-size:18px;">sjr3065335594</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">消灭极域暴政，414属于gar...</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">407407条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span class="sgoj-purple"
+                                                                    style="font-size:18px;">liucang</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table cellpadding="10px">
+                                        <span style="font-size:36px;">比赛</span> / Contest
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span
+                                                                    style="color: #FF8F1F;font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span
+                                                                    style="color: #FF8F1F;font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span
+                                                                    style="color: #FF8F1F;font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span
+                                                                    style="color: #FF8F1F;font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span
+                                                                    style="color: #FF8F1F;font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title tmzb">
+                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">题目总版</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info">
+                                                                <span
+                                                                    style="color: #FA5151;font-size:18px;">yyandy</span>
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span
+                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
+                                                        <span>评论&nbsp;<span
+                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
+                                                        <span>最新评论&nbsp;<div class="user-info">
+                                                                <span
+                                                                    style="color: #FF8F1F;font-size:18px;">Hughpig</span>
+                                                            </div></span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

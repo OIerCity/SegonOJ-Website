@@ -19,21 +19,25 @@ def favicon():
 @app.route('/')
 def welcome():
     username = session.get('username')
+    user = db['user'].find_one({'username': username})
     if username is not None:
         is_login = True
     else:
         is_login = False
         username = '游客'
-    if user_is_banned():
+    if user['state']=='banned':
         return render_template('user/banned.html', t_username=username)
     is_admin = False
-    if user_is_admin():
+    if user['state']=='admin':
         is_admin = True
     notice = find_webdb({'type': 'notice'})
     notice['html'] = markdown.markdown(
         notice['content'], extensions=["fenced_code", "tables", "codehilite"]
     )
-    return render_template('main/main.html', t_is_login=is_login, t_notice=notice['html'], t_is_admin=is_admin)
+    userhavebadge = False
+    if user['have_badge']:
+        userhavebadge = True
+    return render_template('main/main.html', t_is_login=is_login, t_notice=notice['html'], t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'])
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
 @app.route('/notice_edit')
