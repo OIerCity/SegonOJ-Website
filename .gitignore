@@ -4,4 +4,4 @@ __pycache__
 .vscode
 .idea
 __MACOSX
-.DM_Store
+.DS_Store
