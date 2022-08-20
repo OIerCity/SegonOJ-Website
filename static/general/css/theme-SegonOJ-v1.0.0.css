@@ -1,6 +1,6 @@
 @font-face {
     font-family: Sans-Regular;
-    src: url(../font/ClearSans-Regular-webfont.woff);
+    src: url(/static/general/font/ClearSans-Regular-webfont.woff);
 }
 
 *, :after, :before {
