@@ -9,31 +9,37 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
 <script src="/static/board/js/markdown-palettes.min.js"></script>
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+    integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+    integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+    crossorigin="anonymous"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true},
-              {left: "\\begin{equation}", right: "\\end{equation}", display: true},
-              {left: "\\begin{align}", right: "\\end{align}", display: true},
-              {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
-              {left: "\\begin{gather}", right: "\\end{gather}", display: true},
-              {left: "\\begin{CD}", right: "\\end{CD}", display: true},
-              {left: "\\[", right: "\\]", display: true}
-          ],
-          // • rendering keys, e.g.:
-          throwOnError : false
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true },
+                { left: "\\begin{equation}", right: "\\end{equation}", display: true },
+                { left: "\\begin{align}", right: "\\end{align}", display: true },
+                { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+                { left: "\\begin{gather}", right: "\\end{gather}", display: true },
+                { left: "\\begin{CD}", right: "\\end{CD}", display: true },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            // • rendering keys, e.g.:
+            throwOnError: false
         });
     });
 </script>
+
 <body>
     <div class="app">
         <div>
@@ -101,15 +107,17 @@
                 <div class="index-content">
                     <br>
                     <div class="mod" style="height:auto;">
-                        <a><img src="/static/general/img/ad.png" style="border-radius:15px;" width="400px" height="200px"></a>
+                        <a><img src="/static/general/img/ad.png" style="border-radius:15px;" width="400px"
+                                height="200px"></a>
                         <div style="display: inline-block; float: right;text-align: center;">
+                            {% if t_is_login %}
                             <div class="user-info">
-                                <span class="sgoj-purple">6872</span>
-                                <span class="badge sgoj-purple">&nbsp;Sestt&nbsp;</span>
+                                <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
+                                {% if t_userhavebadge == True %}
+                                <span class="badge sgoj-{{t_usercolor}}">&nbsp;{{ t_userbadge }}&nbsp;</span>
+                                {% endif %}&nbsp;
+                                <span style="color:blue;font-size: 24px;">的一天</span>
                             </div>
-                            &nbsp;
-                            <span style="color:blue;font-size: 24px;">的一天</span>
-
                             <br>
                             <table>
                                 <tr>
@@ -148,6 +156,12 @@
                                 </tr>
                             </table>
                             <a style="text-align: center;color:lime">查看你今天的运势>></a>
+                            {% else %}
+                            <span style="text-align: center;font-size: 24px;">请先登录</span>
+                            {% endif %}
+                            
+
+                            
                         </div>
                     </div>
                 </div>
@@ -202,7 +216,8 @@
                                                         </span>
                                                         <br>
                                                         <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">262620zzj 这个人wyytl</span></span><br>
+                                                                style="color:#666565;font-size:18px;">262620zzj
+                                                                这个人wyytl</span></span><br>
                                                         <span>评论&nbsp;<span
                                                                 style="color: #FF8F1F;font-size:18px;">857857条</span></span><br>
                                                         <span>最新评论&nbsp;<div class="user-info">
@@ -506,7 +521,7 @@
     <script>
         var c = 0, d = 0;
         {% for item in t_notice %}
-            {{item|safe}}
+        { { item | safe } }
         {% endfor %}
         function a(t) {
             if (t == 1) {
