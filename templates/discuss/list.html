@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SegonOJ - 主页</title>
+    <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<script src="/static/board/js/markdown-palettes.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+    integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+    integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true },
+                { left: "\\begin{equation}", right: "\\end{equation}", display: true },
+                { left: "\\begin{align}", right: "\\end{align}", display: true },
+                { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+                { left: "\\begin{gather}", right: "\\end{gather}", display: true },
+                { left: "\\begin{CD}", right: "\\end{CD}", display: true },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            // • rendering keys, e.g.:
+            throwOnError: false
+        });
+    });
+</script>
+
+<body>
+    <div class="app">
+        <div>
+            <nav style="background-color: #fff; width: 100%;">
+                <div class="logo-long">
+                    <span>
+                        <a href="/">
+                            <img src="/static/general/img/logo-long.png" alt="SegonOJ-Logo" height="72" width="221">
+                        </a>
+
+                    </span>
+                </div>
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/problem.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/problemset.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/ranks.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/discuss.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/app.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if t_is_login %}
+                <div class="user-info">
+                    <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
+                    {% if t_userhavebadge == True %}
+                    <span class="badge sgoj-{{t_usercolor}}">&nbsp;{{ t_userbadge }}&nbsp;</span>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="user-info">
+                    <a href="/login">登录</a>
+                    &nbsp;/&nbsp;
+                    <a href="/register">注册</a>
+                </div>
+                {% endif %}
+
+
+
+            </nav>
+        </div>
+        <div class="main-container">
+
+            <div class="app-main">
+                <div class="index-content">
+                    <div class="mod">
+                        {% for item in t_discuss_list %}
+                        <div class="cell discuss">
+                            <div class="user-info">
+                                <span class="sgoj-{{item.usercolor}}">{{ item.username }}</span>
+                                {% if item.userhavebadge == True %}
+                                <span class="badge sgoj-{{item.usercolor}}">&nbsp;{{ item.userbadge }}&nbsp;</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- 次掉6872 -->
+    <script>
+        var c = 0, d = 0;
+        function jump(t) {
+            window.location.href = t;
+        }
+        function htmlRestore(str) {
+            var s = ``;
+            if (str.length === 0) {
+                return ``;
+            }
+            s = str.replace(/&amp;/g, "&");
+            s = s.replace(/&lt;/g, "<");
+            s = s.replace(/&gt;/g, ">");
+            s = s.replace(/&nbsp;/g, " ");
+            s = s.replace(/&#39;/g, "\'");
+            s = s.replace(/&quot;/g, "\"");
+            return s;
+        }
+    </script>
+</body>

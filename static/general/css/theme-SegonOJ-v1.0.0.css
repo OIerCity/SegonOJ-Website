@@ -138,6 +138,10 @@ ol, ul, li {
     
 }
 
+.cell.discuss{
+    width: 900px;
+}
+
 .cell.title{
     vertical-align: middle;
     padding: 15px;
