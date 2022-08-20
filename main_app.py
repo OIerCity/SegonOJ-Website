@@ -20,20 +20,22 @@ def favicon():
 def welcome():
     username = session.get('username')
     user = db['user'].find_one({'username': username})
+    notice = find_webdb({'type': 'notice'})
+    notice = markdown.markdown(
+        notice['content'], extensions=["fenced_code", "tables", "codehilite"]
+    )
     if username is not None:
         is_login = True
     else:
         is_login = False
         username = '游客'
+        return render_template('main/main.html', t_is_login=False, t_notice=notice['html'], t_is_admin=False, t_userhavebadge=False)
     if user['state']=='banned':
         return render_template('user/banned.html', t_username=username)
     is_admin = False
     if user['state']=='admin':
         is_admin = True
-    notice = find_webdb({'type': 'notice'})
-    notice = markdown.markdown(
-        notice['content'], extensions=["fenced_code", "tables", "codehilite"]
-    )
+    
     userhavebadge = False
     if user['have_badge']:
         userhavebadge = True
