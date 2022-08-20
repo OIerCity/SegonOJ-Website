@@ -29,7 +29,7 @@ def welcome():
     else:
         is_login = False
         username = '游客'
-        return render_template('main/main.html', t_is_login=False, t_notice=notice['html'], t_is_admin=False, t_userhavebadge=False)
+        return render_template('main/main.html', t_is_login=False, t_notice=notice, t_is_admin=False, t_userhavebadge=False)
     if user['state']=='banned':
         return render_template('user/banned.html', t_username=username)
     is_admin = False
@@ -39,7 +39,7 @@ def welcome():
     userhavebadge = False
     if user['have_badge']:
         userhavebadge = True
-    return render_template('main/main.html', t_is_login=is_login, t_notice=notice['html'], t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'])
+    return render_template('main/main.html', t_is_login=is_login, t_notice=notice, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'])
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
 @app.route('/notice_edit')
