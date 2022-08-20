@@ -31,7 +31,7 @@ def welcome():
     if user['state']=='admin':
         is_admin = True
     notice = find_webdb({'type': 'notice'})
-    notice['html'] = markdown.markdown(
+    notice = markdown.markdown(
         notice['content'], extensions=["fenced_code", "tables", "codehilite"]
     )
     userhavebadge = False
