@@ -109,8 +109,10 @@
                     <div class="mod" style="height:auto;">
                         <a><img src="/static/general/img/ad.png" style="border-radius:15px;" width="400px"
                                 height="200px"></a>
-                        <div style="display: inline-block; float: right;text-align: center;">
+                        
                             {% if t_is_login %}
+
+                            <div style="display: inline-block; float: right;text-align: center;"></div>
                             <div class="user-info">
                                 <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
                                 {% if t_userhavebadge == True %}
@@ -155,14 +157,16 @@
                                     </td>
                                 </tr>
                             </table>
+                        
                             <a style="text-align: center;color:lime">查看你今天的运势>></a>
+                        </div>
                             {% else %}
                             <span style="text-align: center;font-size: 24px;">请先登录</span>
                             {% endif %}
                             
 
                             
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="index-content">
