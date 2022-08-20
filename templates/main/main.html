@@ -64,7 +64,7 @@
                     <img src="/static/general/img/icon/ranks.png" alt="problem" height="30" width="30">
                 </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="general/img/icon/fg.png" height="45" width="27" class="fg">
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a class="top-icon">
                     <img src="/static/general/img/icon/discuss.png" alt="problem" height="30" width="30">
@@ -76,7 +76,7 @@
                     <img src="/static/general/img/icon/app.png" alt="problem" height="30" width="30">
                 </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {% if t_user_login %}
+                {% if t_is_login %}
                 <div class="user-info">
                     <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
                     {% if t_userhavebadge == True %}
