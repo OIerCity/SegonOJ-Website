@@ -112,53 +112,54 @@
 
                         {% if t_is_login %}
 
-                        <div style="display: inline-block; float: right;text-align: center;"></div>
-                        <div class="user-info">
-                            <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
-                            {% if t_userhavebadge == True %}
-                            <span class="badge sgoj-{{t_usercolor}}">&nbsp;{{ t_userbadge }}&nbsp;</span>
-                            {% endif %}&nbsp;
-                            <span style="color:blue;font-size: 24px;">的一天</span>
-                        </div>
-                        <br>
-                        <table>
-                            <tr>
-                                <td style="vertical-align: top;text-align: center;">
-                                    <b>
-                                        <div style="display: inline-block;line-height:22px;">
-                                            <span style="font-size: 18px;">你今天刷了多少题？</span>
+                        <div style="display: inline-block; float: right;text-align: center;">
+                            <div class="user-info">
+                                <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
+                                {% if t_userhavebadge == True %}
+                                <span class="badge sgoj-{{t_usercolor}}">&nbsp;{{ t_userbadge }}&nbsp;</span>
+                                {% endif %}&nbsp;
+                                <span style="color:blue;font-size: 24px;">的一天</span>
+                            </div>
+                            <br>
+                            <table>
+                                <tr>
+                                    <td style="vertical-align: top;text-align: center;">
+                                        <b>
+                                            <div style="display: inline-block;line-height:22px;">
+                                                <span style="font-size: 18px;">你今天刷了多少题？</span>
+                                                <br>
+                                                <span style="font-size: 18px;">你离目标还有多少？</span>
+                                            </div>
                                             <br>
-                                            <span style="font-size: 18px;">你离目标还有多少？</span>
-                                        </div>
+                                        </b>
+                                        <table style="margin: 0 auto;">
+                                            <img src="/static/general/img/icon/fg2.png" class="fg"
+                                                style="top:235px;margin-left: -15px;">
+                                            <tr>
+                                                <td><span style="color:lime;font-size: 36px;">5</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <span style="color:gray;font-size: 24px;">5</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="vertical-align: top;">
+                                        <b><span>你的卷值有这么多</span></b>
                                         <br>
-                                    </b>
-                                    <table style="margin: 0 auto;">
-                                        <img src="/static/general/img/icon/fg2.png" class="fg"
-                                            style="top:235px;margin-left: -15px;">
-                                        <tr>
-                                            <td><span style="color:lime;font-size: 36px;">5</span>
-                                            </td>
-                                        </tr>
+                                        <span style="font-size: 36px;text-align: center;color:#FFC300">2022</span>
+                                        <br>
+                                        <span style="font-style:italic;float:right;color: #f00;">(-154)</span>
+                                    </td>
+                                </tr>
+                            </table>
 
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <span style="color:gray;font-size: 24px;">5</span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td style="vertical-align: top;">
-                                    <b><span>你的卷值有这么多</span></b>
-                                    <br>
-                                    <span style="font-size: 36px;text-align: center;color:#FFC300">2022</span>
-                                    <br>
-                                    <span style="font-style:italic;float:right;color: #f00;">(-154)</span>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <a style="text-align: center;color:lime">查看你今天的运势>></a>
+                            <a style="text-align: center;color:lime">查看你今天的运势>></a>
+                        </div>
                     </div>
                     {% else %}
                     <span style="text-align: center;font-size: 24px;vertical-align: middle;">请先登录</span>
