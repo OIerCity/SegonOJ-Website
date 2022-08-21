@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, request, jsonify, send_from_directory
 from user_app import user_app
-from discuss_app import discuss_app
+from discuss_app import discuss_app, find_discuss
+from datetime import date, datetime
 import pymongo
 import markdown
 import os
@@ -22,16 +23,13 @@ def favicon():
 def welcome():
     username = session.get('username')
     user = db['user'].find_one({'username': username})
-    notice = find_webdb({'type': 'notice'})
-    notice = markdown.markdown(
-        notice['content'], extensions=["fenced_code", "tables", "codehilite"]
-    )
+    anncouncements = find_discuss({'forum': 'anncouncement'})
     if username is not None:
         is_login = True
     else:
         is_login = False
         username = '游客'
-        return render_template('main/main.html', t_is_login=False, t_notice=notice, t_is_admin=False, t_userhavebadge=False, t_username=username)
+        return render_template('main/main.html', t_is_login=False, t_anncouncements=anncouncements, t_is_admin=False, t_userhavebadge=False, t_username=username)
     if user['state']=='banned':
         return render_template('user/banned.html', t_username=username)
     is_admin = False
@@ -41,7 +39,7 @@ def welcome():
     userhavebadge = False
     if user['have_badge']:
         userhavebadge = True
-    return render_template('main/main.html', t_is_login=is_login, t_notice=notice, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username)
+    return render_template('main/main.html', t_is_login=is_login, t_anncouncements=anncouncements, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username)
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
 @app.route('/notice_edit')
