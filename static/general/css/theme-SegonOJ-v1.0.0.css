@@ -2,8 +2,7 @@
     font-family: Sans-Regular;
     src: url(/static/general/font/ClearSans-Regular-webfont.woff);
 }
-
-*, :after, :before {
+:after, :before {
     box-sizing: border-box;
 }
 
@@ -108,7 +107,7 @@ ol, ul, li {
     box-shadow: 5px 5px 10px #999;
     min-height: 150px;
     min-width: 100px;
-    max-width: 720px;
+    max-width: 1200px;
     z-index: 777;
     border-radius: 25px;
     font-size: 20px;
@@ -118,7 +117,7 @@ ol, ul, li {
     background-color: #ffffff88;
     white-space:nowrap;
     height: auto;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* logo */
@@ -132,15 +131,27 @@ ol, ul, li {
     outline: 0;
 }
 
+.footer{
+    border-radius: 20px;
+    max-width: 1200px;
+    background-image: linear-gradient(to right, #7400F9, #1e00ff);
+    color:white;
+    opacity: 0.5;
+    font-size: 18px;
+    overflow: hidden;
+    padding: 50px;
+    margin-top: 50px;
+}
+
+.footer a{
+    color: white;
+}
+
 .cell{
     border-radius: 15px;
     box-shadow: 5px 5px 10px gray;
     width: 250px;
     
-}
-
-.cell.discuss{
-    width: 480px;
 }
 
 .cell.title{
@@ -228,7 +239,6 @@ ol, ul, li {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin-left: 96px;
     flex: 1;
 }
 .app-main {
@@ -241,8 +251,8 @@ ol, ul, li {
 
 .index-content {
     display: block;
-    max-width: 72%;
-    margin-top: 96px;
+    max-width: 1200px;
+    margin-top: auto;
     margin-left: auto;
     margin-right: auto;
 }
