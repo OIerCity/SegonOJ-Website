@@ -586,13 +586,14 @@
                 <div class="index-content">
                     <div class="mod">
                         <span style="font-size:36px;">公告</span> / Anncouncements
-                        {% for item in t_anncouncements %}
                         <hr>
+                        {% for item in t_anncouncements %}
+                        
                         <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{t_usercolor}}" style="font-size: 18px">{{ t_username }}</span>
                         {% if t_userhavebadge == True %}
                         <span class="badge sgoj-{{t_usercolor}}" style="font-size: 18px">&nbsp;{{ t_userbadge
                             }}&nbsp;</span>{% if item.sticky %}<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;{% endif %}</span>
-                        
+                            <hr>
                         {% endif %}
                         {% endfor %}
                     </div>
