@@ -38,6 +38,36 @@
             throwOnError: false
         });
     });
+    var now = 1, per_width = 400, tot = 3, intervalid;
+    function StartSlide() {
+        intervalid = setInterval(SlideNext, 5000);
+    }
+    function StopSlide() {
+        clearInterval(intervalid);
+    }
+    function SlideNext() {
+        if (now == tot) {
+            SlideTo(1)
+            now = 1;
+            return;
+
+        }
+        now++;
+        SlideTo(now);
+    }
+    function SlidePrev() {
+        if (now == 1) {
+            SlideTo(tot)
+            now = tot;
+            return;
+        }
+        now--;
+        SlideTo(now);
+    }
+    function SlideTo(id) {
+        document.getElementById('slider').style.transform = "translate3d(-" + id * per_width + "px,0px,0px)";
+    }
+    window.onload = StartSlide;
 </script>
 
 <body>
@@ -107,8 +137,13 @@
                 <div class="index-content">
                     <br>
                     <div class="mod" style="height:auto;">
-                        <a><img src="/static/general/img/ad.png" style="border-radius:15px;" width="400px"
-                                height="200px"></a>
+                        <ul>
+                            <li width="400" height="200">
+                                <a>
+                                    <img>
+                                </a>
+                            </li>
+                        </ul>
 
                         {% if t_is_login %}
 
@@ -162,10 +197,28 @@
                         </div>
                     </div>
                     {% else %}
-                    <span style="text-align: center;font-size: 24px;vertical-align: middle;">请先登录</span>
+                    <div style="display: inline-block; float: right;text-align: center;font-size: 36px;">
+                        请先登录
+                    </div>
                     {% endif %}
 
-
+                    <div class="viewport" onmouseover="StopSlide()" onmouseout="StartSlide()">
+                        <ul class="slider" style="transform: translate3d(-400px,0px,0px);transition-duration: .6s;"
+                            id="slider">
+                            <li style="float: left;">
+                                <img src="/static/general/img/ad.png">
+                            </li>
+                            <li style="float: left;">
+                                <img src="/static/general/img/ad.png">
+                            </li>
+                            <li style="float: left;">
+                                <img src="/static/general/img/ad.png">
+                            </li>
+                            <li style="float: left;">
+                                <img src="/static/general/img/ad.png">
+                            </li>
+                        </ul>
+                    </div>
 
 
                 </div>

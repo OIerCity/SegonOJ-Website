@@ -246,6 +246,25 @@ ol, ul, li {
     margin-right: auto;
 }
 
+.viewport {
+    overflow: hidden;
+    transition: all 1s ease;
+    position: relative;
+    width: 400px;
+}
+
+.slider{
+    width: 1800%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slider img{
+    width: 400px;
+    height: 200px;
+}
+
 /* 登录/注册 */
 .sh {
     font-size: 18px;
