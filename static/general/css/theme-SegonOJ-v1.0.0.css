@@ -263,6 +263,7 @@ ol, ul, li {
     margin-bottom: 2em;
     box-sizing: border-box;
     max-width: 100%;
+    margin-top: 96px;
 }
 
 .index-content {
