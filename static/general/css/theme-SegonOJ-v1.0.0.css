@@ -108,6 +108,7 @@ ol, ul, li {
     box-shadow: 5px 5px 10px #999;
     min-height: 150px;
     min-width: 100px;
+    max-width: 720px;
     z-index: 777;
     border-radius: 25px;
     font-size: 20px;
@@ -139,7 +140,7 @@ ol, ul, li {
 }
 
 .cell.discuss{
-    width: 900px;
+    width: 480px;
 }
 
 .cell.title{
