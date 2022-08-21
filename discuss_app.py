@@ -37,7 +37,7 @@ def discuss_list():
             page = 0
         else: page = request.args.get('page')
         alist = find_discuss(condition, page)
-        pagination = Pagination(page=page, per_page=per_page, total=max(c_discuss.count_documents(condition),page_limit), search=False, record_name='alist')
+        
         return render_template('discuss/list.html', t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username, t_discuss_list=alist)
     else:
         return
