@@ -28,7 +28,7 @@ def discuss_list():
     userhavebadge = False
     if user['have_badge']:
         userhavebadge = True
-    if user['status'] == 'admin':
+    if user['state'] == 'admin':
         is_admin = True
     condition = {'status': 'public'}
     
