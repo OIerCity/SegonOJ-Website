@@ -1,5 +1,6 @@
 from flask import Flask, render_template, session, request, jsonify, send_from_directory
 from user_app import user_app
+from discuss_app import discuss_app
 import pymongo
 import markdown
 import os
@@ -7,6 +8,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'h4qfibuardfautrr8tdd5i8v7ah72d'
 app.register_blueprint(user_app)
+app.register_blueprint(discuss_app)
 
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db = client['onlinejudge']
