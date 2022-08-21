@@ -589,10 +589,10 @@
                         <hr>
                         {% for item in t_anncouncements %}
                         
-                        <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{t_usercolor}}" style="font-size: 18px">{{ t_username }}</span>
-                        {% if t_userhavebadge == True %}
-                        <span class="badge sgoj-{{t_usercolor}}" style="font-size: 18px">&nbsp;{{ t_userbadge
-                            }}&nbsp;</span>{% if item.sticky %}<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;{% endif %}</span>
+                        <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{t_usercolor}}" style="font-size: 18px">{{ item.username }}</span>
+                        {% if item.userhavebadge == True %}
+                        <span class="badge sgoj-{{t_usercolor}}" style="font-size: 18px">&nbsp;{{ item.userbadge
+                            }}&nbsp;</span>{% if item.sticky == 1 %}<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;{% endif %}</span>
                             <hr>
                         {% endif %}
                         {% endfor %}
