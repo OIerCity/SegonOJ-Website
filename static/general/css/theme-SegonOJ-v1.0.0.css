@@ -2,7 +2,8 @@
     font-family: Sans-Regular;
     src: url(/static/general/font/ClearSans-Regular-webfont.woff);
 }
-:after, :before {
+
+*, :after, :before {
     box-sizing: border-box;
 }
 
@@ -147,11 +148,26 @@ ol, ul, li {
     color: white;
 }
 
+/* logo */
+.logo {
+    display: block;
+    box-sizing: border-box;
+    width: 72px;
+    text-align: center;
+    height: 72px;
+    overflow: hidden;
+    outline: 0;
+}
+
 .cell{
     border-radius: 15px;
     box-shadow: 5px 5px 10px gray;
     width: 250px;
-    
+
+}
+
+.cell.discuss{
+    width: 480px;
 }
 
 .cell.title{
