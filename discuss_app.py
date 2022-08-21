@@ -48,9 +48,9 @@ def discuss_view(id):
 
 def find_discuss(condition,page = 0):
     if page == 0:
-        res = c_discuss.find(condition).sort([("sticky",pymongo.DESCENDING), ("date", pymongo.DESCENDING)]).limit(20)
+        res = c_discuss.find(condition).sort([{"sticky":pymongo.DESCENDING}, {"date": pymongo.DESCENDING}]).limit(20)
     else:
-        res = c_discuss.find(condition).sort({"date",pymongo.DESCENDING}).skip((page-1)*per_page).limit(per_page)
+        res = c_discuss.find(condition).sort({"date":pymongo.DESCENDING}).skip((page-1)*per_page).limit(per_page)
     alist = []
     for item in res:
         alist.append(item)
