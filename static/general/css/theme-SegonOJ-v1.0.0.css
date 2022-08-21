@@ -131,12 +131,13 @@ ol, ul, li {
     border-radius: 25px;
     font-size: 20px;
     margin-left: 5px;
-    padding: 10px 20px;
+    padding: 20px;
     box-shadow: 5px 5px 10px gray;
     background-color: #ffffff88;
     white-space:nowrap;
     height: auto;
     overflow: auto;
+    margin-top: 24px;
 }
 
 /* logo */
