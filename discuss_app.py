@@ -37,7 +37,7 @@ def discuss_list():
             page = 0
         else: page = request.args.get('page')
         alist = find_discuss(condition, page)
-        discuss_app.logger.info(alist)
+        print(alist)
         return render_template('discuss/list.html',t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username, t_discuss_list=alist)
     else:
         return
