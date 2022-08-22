@@ -167,6 +167,27 @@ ol, ul, li {
     color: white;
 }
 
+
+.r-a {
+    background-image: linear-gradient(to right, #FFC300, rgba(255,255,255,50%));
+    padding: 10px;
+}
+
+.r-b {
+    background-image: linear-gradient(to right, #5E5D5D, rgba(255,255,255,50%));
+    padding: 10px;
+}
+
+.r-c {
+    background-image: linear-gradient(to right, #D07616, rgba(255,255,255,50%));
+    padding: 10px;
+}
+
+.r-d {
+    padding: 10px;
+    border-bottom: 1px solid #666565;
+}
+
 /* logo */
 .logo {
     display: block;
@@ -270,6 +291,26 @@ ol, ul, li {
     color:white;
 }
 
+
+.sgoj-ac {
+    background-color: #00B578;
+    border-radius: 15px;
+    color:white;
+}
+
+.sgoj-wa {
+    background-color: #FA5151;
+    border-radius: 15px;
+    color:white;
+}
+
+.tmjh {
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -282,7 +323,7 @@ ol, ul, li {
     margin-bottom: 2em;
     box-sizing: border-box;
     max-width: 100%;
-    margin-top: 96px;
+    margin-top: 72px;
 }
 
 .index-content {
