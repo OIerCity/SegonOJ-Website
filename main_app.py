@@ -27,12 +27,19 @@ def welcome():
     username = session.get('username')
     user = db['user'].find_one({'username': username})
     anncouncements = find_discuss({'forum': 'anncouncement'})
+    rankTopers = db_web.find_one({'type': 'ranktopers'})
+    rankTopersUserInfo = {}
+    rankTopersUserInfo['top1'] = c_user.find_one({'uid': rankTopers['top1']})
+    rankTopersUserInfo['top2'] = c_user.find_one({'uid': rankTopers['top2']})
+    rankTopersUserInfo['top3'] = c_user.find_one({'uid': rankTopers['top3']})
+    rankTopersUserInfo['top4'] = c_user.find_one({'uid': rankTopers['top4']})
+    rankTopersUserInfo['top5'] = c_user.find_one({'uid': rankTopers['top5']})
     if username is not None:
         is_login = True
     else:
         is_login = False
         username = '游客'
-        return render_template('main/main.html', t_is_login=False, t_anncouncements=anncouncements, t_is_admin=False, t_userhavebadge=False, t_username=username)
+        return render_template('main/main.html', t_is_login=False, t_anncouncements=anncouncements, t_is_admin=False, t_userhavebadge=False, t_username=username, t_ranktopers=rankTopersUserInfo)
     if user['state']=='banned':
         return render_template('user/banned.html', t_username=username)
     is_admin = False
@@ -42,13 +49,7 @@ def welcome():
     userhavebadge = False
     if user['have_badge']:
         userhavebadge = True
-    rankTopers = db_web.find_one({'type': 'ranktopers'})
-    rankTopersUserInfo = {}
-    rankTopersUserInfo['top1'] = c_user.find_one({'uid': rankTopers['top1']})
-    rankTopersUserInfo['top2'] = c_user.find_one({'uid': rankTopers['top2']})
-    rankTopersUserInfo['top3'] = c_user.find_one({'uid': rankTopers['top3']})
-    rankTopersUserInfo['top4'] = c_user.find_one({'uid': rankTopers['top4']})
-    rankTopersUserInfo['top5'] = c_user.find_one({'uid': rankTopers['top5']})
+    
     return render_template('main/main.html', t_is_login=is_login, t_anncouncements=anncouncements, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username, t_ranktopers=rankTopersUserInfo)
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
