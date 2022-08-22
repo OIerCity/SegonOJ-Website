@@ -16,10 +16,9 @@ page_limit = 2000
 @discuss_app.before_request
 def before_request():
     if user_app.check_login():
-        return render_template('user/login.html')
+        return redirect('/login')
     if user_app.check_user():
-        username = session.get('username')
-        return render_template('user/banned.html', t_username=username)
+        return redirect('/')
 
 @discuss_app.route('/discuss/list')
 def discuss_list():
