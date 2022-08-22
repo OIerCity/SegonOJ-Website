@@ -50,7 +50,7 @@ def welcome():
     if user['have_badge']:
         userhavebadge = True
     
-    return render_template('main/main.html', t_is_login=is_login, t_anncouncements=anncouncements, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username, t_ranktopers=rankTopersUserInfo)
+    return render_template('main/main.html', t_is_login=is_login, t_anncouncements=anncouncements, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_ranktopers=rankTopersUserInfo)
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
 @app.route('/notice_edit')
