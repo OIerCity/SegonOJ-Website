@@ -132,12 +132,11 @@ ol, ul, li {
     font-size: 20px;
     margin-left: 5px;
     padding: 20px 40px;
-    background-color: #ffffff;
+    background-color: #ffffff80;
     white-space:nowrap;
     height: auto;
     overflow: auto;
     margin-top: 24px;
-    opacity: 0.5;
 }
 
 /* logo */
@@ -375,11 +374,10 @@ ol, ul, li {
     left:50%;
     margin-left:-170px;
     margin-top:-270px;
-    background-color: #fff;
+    background-color: #ffffff80;
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgb(128, 128, 128);
     text-align: center;
-    opacity: 0.5;
 }
 
 .registerbox {
