@@ -581,7 +581,7 @@
                         <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{item.usercolor}}" style="font-size: 18px">{{ item.username }}</span>
                         {% if item.userhavebadge == True %}
                         <span class="badge sgoj-{{item.usercolor}}" style="font-size: 18px">&nbsp;{{ item.userbadge
-                            }}&nbsp;</span>{% if item.sticky == 1 %}&nbsp;<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;{% endif %}</span>
+                            }}&nbsp;</span>{% if item.sticky == 1 %}&nbsp;<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;</span>{% endif %}
                             <hr>
                         {% endif %}
                         {% endfor %}

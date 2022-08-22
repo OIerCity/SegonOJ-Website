@@ -3,24 +3,6 @@
     src: url(/static/general/font/Lato-Regular-15.ttf);
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-    height: 10px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-*::selection {
-    background-color: #cce2ff;
-}
-
 *, :after, :before {
     box-sizing: border-box;
 }
@@ -81,6 +63,15 @@ nav .user-info {
 .badge {
     border-radius: 7.5px;
     color:white;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+
+.discuss-info {
+    font-size: 10px;
+    color: #7f7f7f;
 }
 
 nav .badge {
@@ -132,7 +123,8 @@ ol, ul, li {
     font-size: 20px;
     margin-left: 5px;
     padding: 20px 40px;
-    background-color: #ffffff80;
+    box-shadow: 5px 5px 10px gray;
+    background-color: #ffffff88;
     white-space:nowrap;
     height: auto;
     overflow: auto;
@@ -166,7 +158,6 @@ ol, ul, li {
     color: white;
 }
 
-
 .r-a {
     background-image: linear-gradient(to right, #FFC300, rgba(255,255,255,50%));
     padding: 10px;
@@ -187,26 +178,12 @@ ol, ul, li {
     border-bottom: 1px solid #666565;
 }
 
-/* logo */
-.logo {
-    display: block;
-    box-sizing: border-box;
-    width: 72px;
-    text-align: center;
-    height: 72px;
-    overflow: hidden;
-    outline: 0;
-}
-
 .cell{
     border-radius: 15px;
     box-shadow: 5px 5px 10px gray;
     width: 250px;
-
-}
-
-.cell.discuss{
-    width: 480px;
+    background-color: #FFF;
+    overflow: hidden;
 }
 
 .cell.title{
@@ -220,7 +197,7 @@ ol, ul, li {
     background-image: linear-gradient(to right,#00DE72,rgb(160,239,200));
 }
 
-.cell.fqb{
+.cell.fkb{
     background-image: linear-gradient(to right,#DE00C0,rgb(242,162,231));
 }
 
@@ -228,12 +205,28 @@ ol, ul, li {
     background-image: linear-gradient(to right,#00DE72,rgb(160,239,200));
 }
 
-.cell.hsc{
+.cell.hsb{
     background-image: linear-gradient(to right,#3662EC,rgb(170,188,246));
 }
 
 .cell.zwb{
     background-image: linear-gradient(to right,#FFC300,rgb(255,231,156));
+}
+
+.button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #578ed1;
+    border-radius: 5px;
+    cursor: pointer;
+    color:white;
+    transition: all .2s ease;
+}
+
+.button:hover {
+    background-color: #003b83;
 }
 
 .sgoj-purple{
@@ -263,6 +256,7 @@ ol, ul, li {
 .badge.sgoj-purple{
     background-color:#8013D4;
     color:white;
+    
 }
 
 .badge.sgoj-red{
@@ -290,7 +284,6 @@ ol, ul, li {
     color:white;
 }
 
-
 .sgoj-ac {
     background-color: #00B578;
     border-radius: 15px;
@@ -308,7 +301,6 @@ ol, ul, li {
     border-radius: 15px;
     padding: 15px;
 }
-
 
 .main-container {
     display: flex;
@@ -374,7 +366,7 @@ ol, ul, li {
     left:50%;
     margin-left:-170px;
     margin-top:-270px;
-    background-color: #ffffff80;
+    background-color: #fff;
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgb(128, 128, 128);
     text-align: center;
@@ -392,7 +384,6 @@ ol, ul, li {
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgb(128, 128, 128);
     text-align: center;
-    opacity: 0.5;
 }
 
 .submit {

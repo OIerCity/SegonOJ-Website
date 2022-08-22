@@ -9,6 +9,7 @@ discuss_app = Blueprint('discuss_app', __name__)
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db_discuss = client['onlinejudge']
 c_discuss = db_discuss['discuss']
+c_user = db_discuss['user']
 
 per_page = 20
 page_limit = 2000
@@ -29,7 +30,7 @@ def discuss_list():
         userhavebadge = True
     if user['state'] == 'admin':
         is_admin = True
-    condition = {'status': 'public'}
+    condition = {'status': 'public', 'parent': 0}
     
     if request.args.get('forumname') == None:
         if request.args.get('page') == None:
@@ -37,7 +38,13 @@ def discuss_list():
         else: page = request.args.get('page')
         alist = find_discuss(condition, page)
         print(alist)
-        return render_template('discuss/list.html',t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username, t_discuss_list=alist)
+        discuss_list = []
+        for item in alist:
+            owner = item['owner']
+            lastcommenter = item['lastcommenter']
+            item['owner'] = c_user.find_one({'uid':owner})
+            item['lastcommenter'] = c_user.find_one({'uid':lastcommenter})
+        return render_template('discuss/list.html',t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['badge'], t_usercolor=user['color'], t_username=username, t_discuss_list=discuss_list)
     else:
         return
 
