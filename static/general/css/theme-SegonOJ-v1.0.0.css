@@ -131,7 +131,7 @@ ol, ul, li {
     border-radius: 25px;
     font-size: 20px;
     margin-left: 5px;
-    padding: 20px;
+    padding: 20px 40px;
     box-shadow: 5px 5px 10px gray;
     background-color: #ffffff88;
     white-space:nowrap;
