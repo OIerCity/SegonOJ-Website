@@ -99,7 +99,7 @@ def register_check():
             last_list.append(item)
         last_uid = last_list[0]['uid']
         c_last.update_one({}, {"$set": {'uid': last_uid + 1}})
-        user = {'username': username, 'password': pwd, 'state': 'normal', 'uid': last_uid + 1, 'email': email}
+        user = {'username': username, 'password': pwd, 'state': 'normal', 'uid': last_uid + 1, 'email': email, 'color': 'blue', 'have_badge': 0, 'userbadge': 'default'}
         insert_user(user)
         c_verify.update_one({'email': email, 'passed': 'yes', 'used': 'no', 'verify_code': verify_code},{"$set": {'used': 'yes'}})
         return jsonify({'code': '0'})
