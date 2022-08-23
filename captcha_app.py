@@ -4,6 +4,7 @@ import user_app
 from PIL import Image, ImageDraw, ImageFont
 import string
 import random
+import os
 
 captcha_app = Blueprint('captcha_app', __name__)
 
@@ -155,10 +156,10 @@ def captcha():
     captcha_text = Captcha().make_captcha(user['uid'])
     if len(find_captcha({'uid':user['uid']})) == 0:
         c_captcha.insert_one({'uid':user['uid'],'captcha':captcha_text})
-        return send_from_directory('/static/captcha',str(user['uid']))     
+        return send_from_directory(os.path.join('/home/web/static', 'captcha'),str(user['uid']))     
     else:
         c_captcha.update_one({'uid':user['uid']},{'$set':{'captcha':captcha_text}})
-        return send_from_directory('/static/captcha',str(user['uid']))     
+        return send_from_directory(os.path.join('/home/web/static', 'captcha'),str(user['uid']))     
 
 def find_captcha(condition):
     res = c_captcha.find(condition)
