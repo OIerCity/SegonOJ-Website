@@ -154,6 +154,16 @@ def captcha():
     username = session.get('username')
     user = db_captcha['user'].find_one({'username':username})
     captcha_text = Captcha().make_captcha(user['uid'])
-    if len(c_captcha.find({'uid':user['uid']})):
+    if len(find_captcha({'uid':user['uid']})):
         c_captcha.insert_one({'uid':user['uid'],'captcha':captcha_text})
         return send_from_directory('/home/web/static/captcha',str(user['uid']),as_attachment=False)     
+    else:
+        c_captcha.update_one({'uid':user['uid']},{'$set':{'captcha':captcha_text}})
+        return send_from_directory('/home/web/static/captcha',str(user['uid']),as_attachment=False)     
+
+def find_captcha(condition):
+    res = c_captcha.find(condition)
+    captcha_list = []
+    for item in res:
+        captcha_list.append(item)
+    return captcha_list
