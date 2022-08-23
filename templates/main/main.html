@@ -7,68 +7,70 @@
     <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-</head>
-<script src="/static/board/js/markdown-palettes.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
-    integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
-    integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
-    crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
-    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
-    crossorigin="anonymous"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        renderMathInElement(document.body, {
-            // customised options
-            // • auto-render specific keys, e.g.:
-            delimiters: [
-                { left: '$$', right: '$$', display: true },
-                { left: '$', right: '$', display: false },
-                { left: '\\(', right: '\\)', display: false },
-                { left: '\\[', right: '\\]', display: true },
-                { left: "\\begin{equation}", right: "\\end{equation}", display: true },
-                { left: "\\begin{align}", right: "\\end{align}", display: true },
-                { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
-                { left: "\\begin{gather}", right: "\\end{gather}", display: true },
-                { left: "\\begin{CD}", right: "\\end{CD}", display: true },
-                { left: "\\[", right: "\\]", display: true }
-            ],
-            // • rendering keys, e.g.:
-            throwOnError: false
+    <link rel="stylesheet" type="text/css" href="/static/general/markdown/markdown-palettes.css">
+    <script src="/static/general/markdown/markdown-palettes.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+        integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+        integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+        integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+        crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                // customised options
+                // • auto-render specific keys, e.g.:
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: "\\begin{equation}", right: "\\end{equation}", display: true },
+                    { left: "\\begin{align}", right: "\\end{align}", display: true },
+                    { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+                    { left: "\\begin{gather}", right: "\\end{gather}", display: true },
+                    { left: "\\begin{CD}", right: "\\end{CD}", display: true },
+                    { left: "\\[", right: "\\]", display: true }
+                ],
+                // • rendering keys, e.g.:
+                throwOnError: false
+            });
         });
-    });
-    var now = 1, per_width = 400, tot = 3, intervalid;
-    function StartSlide() {
-        intervalid = setInterval(SlideNext, 5000);
-    }
-    function StopSlide() {
-        clearInterval(intervalid);
-    }
-    function SlideNext() {
-        if (now == tot) {
-            SlideTo(1)
-            now = 1;
-            return;
+        var now = 1, per_width = 400, tot = 3, intervalid;
+        function StartSlide() {
+            intervalid = setInterval(SlideNext, 5000);
+        }
+        function StopSlide() {
+            clearInterval(intervalid);
+        }
+        function SlideNext() {
+            if (now == tot) {
+                SlideTo(1)
+                now = 1;
+                return;
 
+            }
+            now++;
+            SlideTo(now);
         }
-        now++;
-        SlideTo(now);
-    }
-    function SlidePrev() {
-        if (now == 1) {
-            SlideTo(tot)
-            now = tot;
-            return;
+        function SlidePrev() {
+            if (now == 1) {
+                SlideTo(tot)
+                now = tot;
+                return;
+            }
+            now--;
+            SlideTo(now);
         }
-        now--;
-        SlideTo(now);
-    }
-    function SlideTo(id) {
-        document.getElementById('slider').style.transform = "translate3d(-" + id * per_width + "px,0px,0px)";
-    }
-    window.onload = StartSlide;
-</script>
+        function SlideTo(id) {
+            document.getElementById('slider').style.transform = "translate3d(-" + id * per_width + "px,0px,0px)";
+        }
+        window.onload = StartSlide;
+    </script>
+
+</head>
 
 <body>
     <div class="app">
@@ -577,14 +579,17 @@
                         <span style="font-size:36px;">公告</span> / Anncouncements
                         <hr>
                         {% for item in t_anncouncements %}
-                        
-                        <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{item.usercolor}}" style="font-size: 18px">{{ item.username }}</span>
-                        {% if item.userhavebadge == True %}
-                        <span class="badge sgoj-{{item.usercolor}}" style="font-size: 18px">&nbsp;{{ item.userbadge
-                            }}&nbsp;</span>{% if item.sticky == 1 %}&nbsp;<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;</span>{% endif %}
+
+                        <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{item.owner.color}}"
+                                style="font-size: 18px">{{ item.owner.username }}</span>
+                            {% if item.owner.have_badge == True %}
+                            <span class="badge sgoj-{{item.owner.color}}" style="font-size: 18px">&nbsp;{{
+                                item.owner.userbadge
+                                }}&nbsp;</span>{% endif %}{% if item.sticky == 1 %}&nbsp;<span class="badge sgoj-red"
+                                style="font-size: 18px;">&nbsp;置顶&nbsp;</span>{% endif %}
                             <hr>
-                        {% endif %}
-                        {% endfor %}
+
+                            {% endfor %}
                     </div>
                 </div>
 
@@ -639,7 +644,9 @@
                                         <span style="float: right;margin-right: 5%;"
                                             class="sgoj-ac">&nbsp;&nbsp;AC&nbsp;&nbsp;</span>
                                         <hr>
-                                        <a class="sgoj-ac" style="font-size:18px;">&nbsp;&nbsp;显示已完成&nbsp;&nbsp;</a>&nbsp;<a class="sgoj-wa" style="font-size:18px;">&nbsp;&nbsp;隐藏已完成&nbsp;&nbsp;</a>
+                                        <a class="sgoj-ac"
+                                            style="font-size:18px;">&nbsp;&nbsp;显示已完成&nbsp;&nbsp;</a>&nbsp;<a
+                                            class="sgoj-wa" style="font-size:18px;">&nbsp;&nbsp;隐藏已完成&nbsp;&nbsp;</a>
                                     </div>
 
                                 </div>
