@@ -111,7 +111,7 @@ class Captcha():
         # 生成一张图片
         captcha = Image.new('RGB',self.captcha_size,self.background_color)
         # 获取字体对象
-        font = ImageFont.truetype('general/font/Lato-Regular-15.ttf',self.font_size)
+        font = ImageFont.truetype('/home/web/static/general/font/Lato-Regular-15.ttf',self.font_size)
         # 获取画笔对象
         draw = ImageDraw.Draw(captcha)
         # 得到绘制的字符
