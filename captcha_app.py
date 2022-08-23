@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, session, jsonify, send_from_dictionary
-from flask_pagination import Pagination
 import pymongo
 import user_app
-from PIL import Image, ImageDraw, ImageFont,ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 import string
 import random
 
