@@ -108,7 +108,7 @@
             <div class="app-main">
                 <div class="index-content">
                     <span style="font-size: 42px;margin-left:10%;">
-                        test
+                        {{ t_discuss.title }}
                     </span>
                     <br>
                     <br>
@@ -119,8 +119,11 @@
                                     src="general/img/icon/1.png">
                             <span>
                                 <div class="user-info" style="font-size:18px;">
-                                    <span class="sgoj-purple">liucang</span>
-                                    <span class="badge sgoj-purple">仓仓</span>
+                                    <span class="sgoj-{{t_discuss.owner.color}}">{{ t_discuss.owner.username }}</span>
+                                    {% if t_discuss.owner.have_badge == 1 %}&nbsp;
+                                    <span class="badge sgoj-{{t_discuss.owner.color}}">
+                                        {{ t_discuss.owner.userbadge }}</span>
+                                    {% endif %}
                                 </div>
                             </span>
                         </div>
@@ -130,11 +133,11 @@
                             <a href="javascript:jb()">回复</a>
                             <br>
                             <span class="discuss-info" style="font-size: inherit;">
-                                @2022.8.22 22:19
+                                @{{t_discuss.time}}
                             </span>
                         </div>
                         <hr>
-                        test
+                        {{t_discuss.content}}
                     </div>
                     <div class="mod" style="display: inline-block; float: right;">
                         <span>进入版块</span>
@@ -146,6 +149,7 @@
                         <br><br>
                         <a class="button">反馈版</a>
                     </div>
+                    {% for item in t_comment_list %}
                     <div class="mod" style="display: inline-block; width:75%;">
                         <div style="display: inline-block;">
                             <img width="50px" height="50px"
@@ -153,8 +157,11 @@
                                     src="general/img/icon/1.png">
                             <span>
                                 <div class="user-info" style="font-size:18px;">
-                                    <span class="sgoj-purple">liucang</span>
-                                    <span class="badge sgoj-purple">仓仓</span>
+                                    <span class="sgoj-{{item.owner.color}}">{{ item.owner.username }}</span>
+                                    {% if item.owner.have_badge == 1 %}&nbsp;
+                                    <span class="badge sgoj-{{item.owner.color}}">
+                                        {{ item.owner.userbadge }}</span>
+                                    {% endif %}
                                 </div>
                             </span>
                         </div>
@@ -164,12 +171,13 @@
                             <a href="javascript:jb()">回复</a>
                             <br>
                             <span class="discuss-info" style="font-size: inherit;">
-                                @2022.8.22 22:19
+                                @{{item.time}}
                             </span>
                         </div>
                         <hr>
-                        test
+                        {{item.content}}
                     </div>
+                    {% endfor %}
                     <div class="mod"  style="display: inline-block; width:75%;">
                         <span style="font-size: 36px;">
                             回复

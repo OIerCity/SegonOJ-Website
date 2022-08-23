@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, session, jsonif
 from flask_pagination import Pagination
 import pymongo
 import user_app
+import markdown
 
 
 discuss_app = Blueprint('discuss_app', __name__)
@@ -78,13 +79,24 @@ def discuss_view(id):
         page = 0
     else:
         page = request.args.get('page')
+    discuss = c_discuss.find_one({'id': id})
+    owner = discuss['owner']
+    lastcommenter = discuss['lastcommenter']
+    discuss['owner'] = c_user.find_one({'uid': owner})
+    discuss['lastcommenter'] = c_user.find_one({'uid': lastcommenter})
+    discuss['content'] = markdown.markdown(
+        discuss['content'],extensions=["fenced_code", "tables", "codehilite"]
+    )
     alist = find_discuss(condition, page)
-    discuss_list = []
+    comment_list = []
     for item in alist:
         owner = item['owner']
         item['owner'] = c_user.find_one({'uid': owner})
-        discuss_list.append(item)
-    return render_template('discuss/discuss.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_discuss_list=discuss_list)
+        item['content'] = markdown.markdown(
+            item['content'],extensions=["fenced_code", "tables", "codehilite"]
+        )
+        comment_list.append(item)
+    return render_template('discuss/discuss.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_comment_list=comment_list, t_discuss=discuss)
 
 
 def find_discuss(condition, page=0):

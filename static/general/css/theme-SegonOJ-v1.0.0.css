@@ -223,6 +223,7 @@ ol, ul, li {
     cursor: pointer;
     color:white;
     transition: all .2s ease;
+    box-shadow: 5px 5px 15px #aaa;
 }
 
 .button:hover {
@@ -283,6 +284,68 @@ ol, ul, li {
     background-color:#FF00D4;
     color:white;
 }
+
+
+.button.sgoj-purple{
+    background-color:#8013D4;
+    color:white;
+    
+}
+
+.button.sgoj-red{
+    background-color:#FA5151;
+    color:white;
+}
+
+.button.sgoj-red:hover{
+    background-color:#8d2c2c;
+}
+
+.button.sgoj-orange{
+    background-color:#FF8F1F;
+    color:white;
+}
+
+.button.sgoj-green{
+    background-color:#1DD413;
+    color:white;
+}
+
+.button.sgoj-blue{
+    background-color:#0658FD;
+    color:white;
+}
+
+.button.sgoj-pink{
+    background-color:#FF00D4;
+    color:white;
+}
+
+
+.button.sgoj-purple:hover{
+    background-color:#561686;
+}
+
+.button.sgoj-red:hover{
+    background-color:#8d2c2c;
+}
+
+.button.sgoj-orange:hover{
+    background-color:#8d5114;
+}
+
+.button.sgoj-green:hover{
+    background-color:#197e13;
+}
+
+.button.sgoj-blue:hover{
+    background-color:#123883;
+}
+
+.button.sgoj-pink:hover{
+    background-color:#9d1e88;
+}
+
 
 .sgoj-ac {
     background-color: #00B578;
@@ -469,3 +532,7 @@ ol, ul, li {
     box-sizing: border-box;
 }
 
+.discuss-top {
+    background-color: #aaa;
+    font-size: 10px;
+}
