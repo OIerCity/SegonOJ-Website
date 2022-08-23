@@ -156,4 +156,4 @@ def captcha():
     captcha_text = Captcha().make_captcha(user['uid'])
     if len(c_captcha.find({'uid':user['uid']})):
         c_captcha.insert_one({'uid':user['uid'],'captcha':captcha_text})
-        return send_from_directory('captcha',str(user['uid']),as_attachment=False)     
+        return send_from_directory('/home/web/static/captcha',str(user['uid']),as_attachment=False)     
