@@ -5,6 +5,8 @@ from PIL import Image, ImageDraw, ImageFont
 import string
 import random
 
+captcha_app = Blueprint('captcha_app', __name__)
+
 class Captcha():
     '''
     captcha_size: 验证码图片尺寸
@@ -131,9 +133,6 @@ class Captcha():
         captcha.save('/home/web/static/captcha/'+str(uid)+'.png',format=self.format)
 
         return self.text
-
-
-captcha_app = Blueprint('captcha_app', __name__)
 
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db_captcha = client['onlinejudge']
