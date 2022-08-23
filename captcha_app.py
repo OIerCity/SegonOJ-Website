@@ -128,7 +128,7 @@ class Captcha():
         self.draw_point(draw,10,width,height)
 
         # 保存图片
-        captcha.save('captcha/'+str(uid)+'.png',format=self.format)
+        captcha.save('/home/web/static/captcha/'+str(uid)+'.png',format=self.format)
 
         return self.text
 
