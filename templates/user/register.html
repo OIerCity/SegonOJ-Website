@@ -94,16 +94,8 @@
         {% if t_found == False %}
         <script>
             document.getElementById("register").onclick=function(){
-                $.post("/register_send",{"email": document.getElementById("email").value},function(message){
-                    if(message.code=='0'){
-                        alert("发送成功！请查看邮箱")
-                    }
-                    if(message.code=='2'||message.code=='-1'){
-                        alert("此邮箱已被使用！")
-                    }
-                    if(message.code=='3'){
-                        alert("发验证码太急了吧...")
-                    }
+                $.post("/api/register_send",{"email": document.getElementById("email").value},function(message){
+                    alert('message');
                 }
                 )
             }
@@ -113,23 +105,11 @@
             email = '{{t_email}}'
             verify_code = '{{t_verify_code}}'
             document.getElementById("submit").onclick=function(){
-                $.post("/register_check",{"username": document.getElementById('username').value, "password": md5(document.getElementById('password').value), "email": email, "verify_code": verify_code},
+                $.post("/api/register_check",{"username": document.getElementById('username').value, "password": document.getElementById('password').value, "email": email, "verify_code": verify_code},
                     function(message){
-                        if(message.code=='0'){
-                            alert("注册成功！");
+                        alert(message);
+                        if(message.status==200){
                             window.location.href="/login";
-                        }
-                        if(message.code=='-1'){
-                            alert("用户名不能为空！");
-                        }
-                        if(message.code=='1'){
-                            alert("邮箱验证错误！");
-                        }
-                        if(message.code=='2'){
-                            alert("用户名不能包含特殊字符！");
-                        }
-                        if(message.code=='3'){
-                            alert("用户名已被占用！");
                         }
                     }
                 )

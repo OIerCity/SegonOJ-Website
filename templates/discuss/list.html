@@ -163,19 +163,6 @@
                         <hr>
                         {% endfor %}
                     </div>
-                    <div class="mod"  style="display: inline-block; width:75%;">
-                        <span style="font-size: 36px;">
-                            发帖
-                        </span>
-                        <br>
-                        <div style="height:450px;font-size:18px;">
-                            <div id="editor"></div>
-                        </div>
-                        <br>
-                        <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:162px;" placeholder="验证码"><img width="120px" height="48px" alt="验证码" src="/captcha">
-                        <br><br>
-                        <a class="button sgoj-red">发送</a>
-                    </div>
                     <div class="mod" style="display: inline-block; float: right;">
                         <span>进入版块</span>
                         <br>
@@ -186,31 +173,43 @@
                         <br><br>
                         <a class="button">反馈版</a>
                     </div>
+                    {% if t_forum is not 'all' %}
+                    <div class="mod"  style="display: inline-block; width:75%;">
+                        <span style="font-size: 36px;">
+                            发帖
+                        </span>
+                        <br>
+                        <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:100%;" placeholder="标题" id="title">
+                        <br>
+                        <div style="height:450px;font-size:18px;">
+                            <div id="editor"></div>
+                        </div>
+                        <br>
+                        <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:162px;" placeholder="验证码" id="captcha"><img width="120px" height="48px" alt="验证码" src="/captcha">
+                        <br><br>
+                        <a class="button sgoj-red" href="javascript:post_discuss()">发送</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
     </div>
     <!-- 次掉6872 -->
+    {% if t_forum is not 'all' %}
     <script>
         var editor = new MarkdownPalettes('#editor');
         editor.content = ``;
-        var c = 0, d = 0;
-        function jump(t) {
-            window.location.href = t;
-        }
-        function htmlRestore(str) {
-            var s = ``;
-            if (str.length === 0) {
-                return ``;
-            }
-            s = str.replace(/&amp;/g, "&");
-            s = s.replace(/&lt;/g, "<");
-            s = s.replace(/&gt;/g, ">");
-            s = s.replace(/&nbsp;/g, " ");
-            s = s.replace(/&#39;/g, "\'");
-            s = s.replace(/&quot;/g, "\"");
-            return s;
+        var forumname = '{{t_forum}}'
+        function post_discuss(){
+            var content = editor.content;
+            var title = document.getElementById('title').value;
+            var captcha = document.getElementById('captcha').value;
+            $.post('/api/post_discuss',{'forum':forumname,'content':content,'title':title,'captcha':captcha},
+            function(message){
+                alert(message.message);
+            });
         }
     </script>
+    {% endif %}
 </body>

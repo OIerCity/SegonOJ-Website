@@ -55,19 +55,6 @@ def welcome():
     return render_template('main/main.html', t_is_login=is_login, t_anncouncements=anncouncements, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_ranktopers=rankTopersUserInfo)
 #TODO add useravater("<img src=\"/static/user/avater/" + uid + ".png\" class=\"avater\">")
 
-@app.route('/notice_edit')
-def notice_edit():
-    notice = find_webdb({'type': 'notice'})
-    return render_template('main/notice_edit.html',t_notice=notice['content'])
-
-@app.route('/edit', methods=['POST'])
-def edit():
-    if request.form['type']=='notice':
-        if not user_is_admin():
-            return jsonify({'code':'1'})
-        db_web.update_one({'type': 'notice'}, {'$set': {'content': request.form['content']}})
-        return jsonify({'code':'0'})
-
 def user_is_banned():
     username = session.get('username')
     user_list = find_user({'username': username})

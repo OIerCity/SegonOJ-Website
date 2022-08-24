@@ -137,7 +137,7 @@
                             </span>
                         </div>
                         <hr>
-                        {{t_discuss.content}}
+                        {{t_discuss.content|safe}}
                     </div>
                     <div class="mod" style="display: inline-block; float: right;">
                         <span>进入版块</span>
@@ -175,7 +175,7 @@
                             </span>
                         </div>
                         <hr>
-                        {{item.content}}
+                        {{item.content|safe}}
                     </div>
                     {% endfor %}
                     <div class="mod"  style="display: inline-block; width:75%;">

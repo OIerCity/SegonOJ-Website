@@ -35,27 +35,27 @@ def register():
 def change_password():
     return render_template('user/change_password.html')
 
-@user_app.route('/register_send', methods=['POST'])
+@user_app.route('/api/register_send', methods=['POST'])
 def register_send():
     email = request.form['email']
     if len(find_user({'email': email})) == 1:
-        return jsonify({'code': '2'})
+        return jsonify({'status': 403,'message':'此邮箱已被占用'})
     v_email = c_verify.find_one({'email': email})
     if v_email is not None:
         if v_email['used'] == 'yes':
-            return jsonify({'code': '-1'})
+            return jsonify({'status': 403,'message':'此邮箱已被占用'})
         if datetime.timestamp(datetime.now())-v_email['timestamp'] <= 60:
-            return jsonify({'code': '3'})
+            return jsonify({'status': 403,'message':'验证码发送冷却中'})
     status, code = send_mail(email)
     if status:
         if v_email is not None:
             c_verify.update_one({'email': email}, {'$set': {'verify_code': code, 'passed': 'no', 'timestamp': datetime.timestamp(datetime.now())}})
-            return jsonify({'code': '0'})
+            return jsonify({'status': 200,'message':'发送成功'})
         else:
             c_verify.insert_one({'email': email, 'verify_code': code, 'passed': 'no', 'used': 'no', 'timestamp': datetime.timestamp(datetime.now())})
-            return jsonify({'code': '0'})
+            return jsonify({'status': 200,'message':'发送成功'})
     else:
-        return jsonify({'code': '1'})
+        return jsonify({'status': 500,'message':'发生未知错误'})
 
 @user_app.route('/register_verify')
 def register_verify():
@@ -70,27 +70,22 @@ def register_verify():
         c_verify.update_one({'email': email, 'verify_code': verify_code}, {'$set': {'passed': 'yes'}})
         return render_template('user/register.html',t_found=True, t_email=email, t_verify_code=verify_code)
 
-@user_app.route('/register_check', methods=['POST'])
+@user_app.route('/api/register_check', methods=['POST'])
 def register_check():
     username = request.form['username']
     pwd = request.form['password']
     email = request.form['email']
     verify_code = request.form['verify_code']
-    banned_str = "~`!@#$%^&*()-=+{}[];:\'\"<>,.?\\|/"
+    whitelist_str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"
     e_verify = c_verify.find_one({'email': email, 'passed': 'yes', 'used': 'no', 'verify_code': verify_code})
     if e_verify is None:
-        return jsonify({'code': '1'})
-    if len(username) == 0:
-        return jsonify({'code': '-1'})
-    for i in banned_str:
-        if i in username:
-            return jsonify({'code': '2'})
-    # username = request.form['username']
-    # password = request.form['password']
-    # banned_str="~`!@#$%^&*()=+{}[];:\'\"<>,.?\\|"
-    # for i in banned_str:
-    #     if i in username:
-    #         return render_template('user/register.html', t_username=username, t_msg='用户名不能包含特殊字符！')
+        return jsonify({'status': 403,'message':'邮箱验证错误'})
+    if len(username) == 0 or len(pwd) == 0:
+        return jsonify({'status': 403,'message':'用户名或密码不能为空'})
+    pwd = encrypt(pwd)
+    for i in username:
+        if i in whitelist_str is not True:
+            return jsonify({'status': 403,'message':'用户名不能包含特殊字符'})
     user_list = find_user({'username': username})
     if len(user_list) == 0:
         res = c_last.find()
@@ -102,13 +97,13 @@ def register_check():
         user = {'username': username, 'password': pwd, 'state': 'normal', 'uid': last_uid + 1, 'email': email, 'color': 'blue', 'have_badge': 0, 'userbadge': 'default', 'juan': 0}
         insert_user(user)
         c_verify.update_one({'email': email, 'passed': 'yes', 'used': 'no', 'verify_code': verify_code},{"$set": {'used': 'yes'}})
-        return jsonify({'code': '0'})
+        return jsonify({'status': 200,'message':'注册成功！'})
     else:
-        return jsonify({'code': '3'})
+        return jsonify({'status': 403,'message':'用户名已被使用'})
     
 
 
-@user_app.route('/change_submit', methods=['POST'])
+@user_app.route('/api/change_submit', methods=['POST'])
 def change_submit():
     username = session["username"]
     password = request.form['old_password']
@@ -141,12 +136,13 @@ def login():
     return render_template('user/login.html')
 
 
-@user_app.route('/login_check', methods=['POST'])
+@user_app.route('/api/login_check', methods=['POST'])
 def login_check():
     username = request.form['username']
     pwd = request.form['password']
     if pwd == None or username == None:
-        return jsonify({"message":"用户名或密码不能为空"})
+        return jsonify({'status':403,"message":"用户名或密码不能为空"})
+    pwd = encrypt(pwd)
     user_list = find_user({'username': username, 'password': pwd})
     if len(user_list) == 1:
         # if user_list[0]['state'] == "2":
@@ -158,11 +154,11 @@ def login_check():
             else:
                 ip = request.remote_addr
             c_user.update_one({'username': username}, {"$set": {'last_login_ip': ip}})
-            return jsonify({"code":"0"})
+            return redirect('/')
         else:
-            return jsonify({"code":"2"})
+            return redirect('/banned')
     else:
-        return jsonify({"code":"1"})
+        return jsonify({'status':403,'message':'用户名或密码错误'})
 
 @user_app.route('/banned')
 def banned():
