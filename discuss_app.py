@@ -62,6 +62,7 @@ def discuss_list():
         else:
             page = request.args.get('page')
         alist = find_discuss(condition, page)
+        discuss_list = []
         for item in alist:
             owner = item['owner']
             lastcommenter = item['lastcommenter']
