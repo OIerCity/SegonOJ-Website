@@ -115,7 +115,7 @@ def discuss_post():
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
-    if captcha is not c_captcha.find_one({'uid':uid})['captcha']:
+    if captcha != c_captcha.find_one({'uid':uid})['captcha']:
         return jsonify({'status':403,'message':'验证码错误'})
     if content == '':
         return jsonify({'status':403,'message':'内容不能为空'})
@@ -125,7 +125,7 @@ def discuss_post():
         return jsonify({'status':403,'message':'标题不能超过18个字'})
     if forum is 'announcements' and user['state'] is not 'admin':
         return jsonify({'status':403,'message':'您无权限在此处发帖'})
-    if forum is not 'water' and forum is not 'site' and forum is not 'problem' and forum is not 'academics' and forum is not 'service':
+    if forum != 'water' and forum != 'site' and forum != 'problem' and forum != 'academics' and forum != 'service':
         return jsonify({'status':403,'message':'板块未找到'})
     discuss = {}
     local_time = time.time()
