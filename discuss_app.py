@@ -54,7 +54,7 @@ def discuss_list():
             item['owner'] = c_user.find_one({'uid': owner})
             item['lastcommenter'] = c_user.find_one({'uid': lastcommenter})
             discuss_list.append(item)
-        return render_template('discuss/list.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_discuss_list=discuss_list,t_forum='all')
+        return render_template('discuss/list.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_discuss_list=discuss_list,t_forum='all',t_canpost=0)
     else:
         condition['forum'] = request.args.get('forumname')
         if request.args.get('page') == None:
@@ -68,7 +68,7 @@ def discuss_list():
             item['owner'] = c_user.find_one({'uid': owner})
             item['lastcommenter'] = c_user.find_one({'uid': lastcommenter})
             discuss_list.append(item)
-        return render_template('discuss/list.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_discuss_list=discuss_list,t_forum=request.args.get('forumname'))
+        return render_template('discuss/list.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_discuss_list=discuss_list,t_forum=request.args.get('forumname'),t_canpost=1)
 
 
 @discuss_app.route('/discuss/<int:id>')
