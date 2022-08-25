@@ -149,8 +149,8 @@
                                     <div class="user-info" style="font-size:10px;">
                                         <span class="sgoj-{{item.lastcommenter.color}}">
                                             {{ item.lastcommenter.username }}</span>
-                                        {% if item.lastcommenter.have_badge == 1%}
-                                        &nbsp;<span class="badge {{item.lastcommenter.color}}">
+                                        {% if item.lastcommenter.have_badge == 1 %}
+                                        &nbsp;<span class="badge sgoj-{{item.lastcommenter.color}}">
                                             {{ item.lastcommenter.userbadge }}</span>
                                         {% endif %}
                                     </div>
