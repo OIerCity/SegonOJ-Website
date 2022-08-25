@@ -95,7 +95,7 @@
         <script>
             document.getElementById("register").onclick=function(){
                 $.post("/api/register_send",{"email": document.getElementById("email").value},function(message){
-                    alert('message');
+                    alert(message.message);
                 }
                 )
             }
@@ -107,7 +107,7 @@
             document.getElementById("submit").onclick=function(){
                 $.post("/api/register_check",{"username": document.getElementById('username').value, "password": document.getElementById('password').value, "email": email, "verify_code": verify_code},
                     function(message){
-                        alert(message);
+                        alert(message.message);
                         if(message.status==200){
                             window.location.href="/login";
                         }
