@@ -131,15 +131,15 @@ def discuss_post():
     forumname = ''
     if forum is 'announcement':
         forumname = '公告板'
-    elif forum is 'water':
+    if forum is 'water':
         forumname = '划水版'
-    elif forum is 'site':
+    if forum is 'site':
         forumname = '站务版'
-    elif forum is 'problem':
+    if forum is 'problem':
         forumname = '题目总版'
-    elif forum is 'academics':
+    if forum is 'academics':
         forumname = '学术版'
-    else:
+    if forum is 'service':
         forumname = '反馈版'
     discuss = {}
     local_time = time.time()
