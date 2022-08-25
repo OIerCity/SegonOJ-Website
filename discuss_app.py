@@ -126,7 +126,7 @@ def discuss_post():
         return jsonify({'status':403,'message':'标题不能超过18个字'})
     if forum is 'announcements' and user['state'] is not 'admin':
         return jsonify({'status':403,'message':'您无权限在此处发帖'})
-    if forum != 'water' and forum != 'site' and forum != 'problem' and forum != 'academics' and forum != 'service':
+    if forum != 'water' and forum != 'site' and forum != 'problem' and forum != 'academics' and forum != 'service' and forum != 'announcement':
         return jsonify({'status':403,'message':'板块未找到'})
     discuss = {}
     local_time = time.time()
@@ -148,7 +148,7 @@ def discuss_post():
     discuss['comments'] = 0
     c_discuss.insert_one(discuss)
     c_last.update_one({},{'$set':{'discussid':last_id + 1}})
-    return redirect('/discuss/' + str(last_id + 1))
+    return jsonify({'status':'200','message':'/discuss/' + str(last_id + 1)})
 
 
 def find_discuss(condition, page=0):

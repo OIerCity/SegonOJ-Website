@@ -154,9 +154,9 @@ def login_check():
             else:
                 ip = request.remote_addr
             c_user.update_one({'username': username}, {"$set": {'last_login_ip': ip}})
-            return redirect('/')
+            return jsonify({'status':200})
         else:
-            return redirect('/banned')
+            return redirect({'status':403,'message':'此用户已被封禁'})
     else:
         return jsonify({'status':403,'message':'用户名或密码错误'})
 

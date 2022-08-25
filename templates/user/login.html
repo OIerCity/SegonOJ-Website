@@ -86,7 +86,10 @@
                 password: document.getElementById('password').value
             },
             function(message){
-                alert('message');
+                if(message.code==200){
+                    window.location.href='/';
+                }
+                alert(message);
             });
         }
     </script>
