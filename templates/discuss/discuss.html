@@ -190,7 +190,7 @@
                         <br>
                         <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:162px;" placeholder="验证码"><img width="120px" height="48px" alt="验证码" src="/captcha">
                         <br><br>
-                        <a class="button sgoj-red">回帖</a>&nbsp;<a class="button sgoj-purple">回帖</a>
+                        <a class="button sgoj-red" href="javascript:post_comment()">回帖</a>
                     </div>
                     
                 </div>
@@ -203,7 +203,7 @@
         var editor = new MarkdownPalettes('#editor');
         editor.content = ``;
         var parent = '{{t_parent}}'
-        function post_discuss(){
+        function post_comment(){
             var content = editor.content;
             var captcha = document.getElementById('captcha').value;
             $.post('/api/post_comment',{'parent':parent,'content':content,'captcha':captcha},
