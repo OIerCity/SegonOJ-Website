@@ -84,7 +84,7 @@ def register_check():
         return jsonify({'status': 403,'message':'用户名或密码不能为空'})
     pwd = encrypt(pwd)
     for i in username:
-        if i in whitelist_str is not True:
+        if (i in whitelist_str) is not True:
             return jsonify({'status': 403,'message':'用户名不能包含特殊字符'})
     user_list = find_user({'username': username})
     if len(user_list) == 0:

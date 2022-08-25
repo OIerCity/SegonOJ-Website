@@ -116,7 +116,7 @@ def discuss_post():
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
-    if SequenceMatcher(a=captcha, b=c_captcha.find_one({'uid':uid})['captcha']).ratio()!=1.0:
+    if ( captcha == c_captcha.find_one({'uid':uid})['captcha'] ) is not True:
         return jsonify({'status':403,'message':'验证码错误'})
     if content == '':
         return jsonify({'status':403,'message':'内容不能为空'})
@@ -159,7 +159,7 @@ def comment_post():
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
-    if SequenceMatcher(a=captcha, b=c_captcha.find_one({'uid':uid})['captcha']).ratio()!=1.0:
+    if ( captcha == c_captcha.find_one({'uid':uid})['captcha'] ) is not True:
         return jsonify({'status':403,'message':'验证码错误'})
     if c_discuss.find_one({'id':parent}) == None:
         return jsonify({'status':403,'message':'帖子未找到'})
