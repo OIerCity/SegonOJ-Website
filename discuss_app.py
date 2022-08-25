@@ -7,6 +7,7 @@ import pymongo
 import user_app
 import markdown
 import time
+from difflib import SequenceMatcher
 
 
 discuss_app = Blueprint('discuss_app', __name__)
@@ -115,7 +116,7 @@ def discuss_post():
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
-    if captcha != c_captcha.find_one({'uid':uid})['captcha']:
+    if SequenceMatcher(a=captcha, b=c_captcha.find_one({'uid':uid})['captcha']).ratio()!=1.0:
         return jsonify({'status':403,'message':'验证码错误'})
     if content == '':
         return jsonify({'status':403,'message':'内容不能为空'})
