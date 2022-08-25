@@ -167,11 +167,11 @@
                         <span>进入版块</span>
                         <br>
                         <br>
-                        <a class="button" href="/discuss/site">站务版</a>&nbsp;<a class="button" href="/discuss/problem">题目总版</a>
+                        <a class="button" href="/discuss/list?forumname=site">站务版</a>&nbsp;<a class="button" href="/discuss/list?forumname=sproblem">题目总版</a>
                         <br><br>
-                        <a class="button" href="/discuss/academics">学术版</a>&nbsp;<a class="button" href="/discuss/water">划水版</a>
+                        <a class="button" href="/discuss/list?forumname=sacademics">学术版</a>&nbsp;<a class="button" href="/discuss/list?forumname=swater">划水版</a>
                         <br><br>
-                        <a class="button" href="/discuss/service">反馈版</a>
+                        <a class="button" href="/discuss/list?forumname=sservice">反馈版</a>
                     </div>
                     {% if t_canpost == 1 %}
                     <div class="mod"  style="display: inline-block; width:75%;">
@@ -209,6 +209,7 @@
             function(message){
                 if(message.status==200){
                     window.location.href=message.message;
+                    return;
                 }
                 alert(message.message);
             });

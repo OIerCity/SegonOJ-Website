@@ -1,8 +1,10 @@
+import imp
 from flask import Flask, render_template, session, request, jsonify, send_from_directory
 from user_app import user_app
 from discuss_app import discuss_app, find_discuss
 from admin_app import admin_app
 from captcha_app import captcha_app
+from upload_app import upload_app
 from datetime import date, datetime
 import pymongo
 import markdown
@@ -14,6 +16,7 @@ app.register_blueprint(user_app)
 app.register_blueprint(discuss_app)
 app.register_blueprint(admin_app)
 app.register_blueprint(captcha_app)
+app.register_blueprint(upload_app)
 
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db = client['onlinejudge']

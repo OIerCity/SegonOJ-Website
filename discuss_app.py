@@ -104,7 +104,7 @@ def discuss_view(id):
             item['content'],extensions=["fenced_code", "tables", "codehilite"]
         )
         comment_list.append(item)
-    return render_template('discuss/discuss.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_comment_list=comment_list, t_discuss=discuss)
+    return render_template('discuss/discuss.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_comment_list=comment_list, t_discuss=discuss,t_parent=id)
 
 
 @discuss_app.route('/api/post_discuss', methods=['POST'])
@@ -149,6 +149,33 @@ def discuss_post():
     c_discuss.insert_one(discuss)
     c_last.update_one({},{'$set':{'discussid':last_id + 1}})
     return jsonify({'status':'200','message':'/discuss/' + str(last_id + 1)})
+
+@discuss_app.route('/api/post_comment', methods=['POST'])
+def comment_post():
+    content = request.form['content']
+    captcha = request.form['captcha']
+    parent = request.form['parent']
+    username = session.get('username')
+    user = c_user.find_one({'username':username})
+    uid=user['uid']
+    if SequenceMatcher(a=captcha, b=c_captcha.find_one({'uid':uid})['captcha']).ratio()!=1.0:
+        return jsonify({'status':403,'message':'验证码错误'})
+    if c_discuss.find_one({'id':parent}) == None:
+        return jsonify({'status':403,'message':'帖子未找到'})
+    if content == '':
+        return jsonify({'status':403,'message':'内容不能为空'})
+    discuss = {}
+    local_time = time.time()
+    format_time = time.strftime('%Y.%m.%d %H:%M')
+    discuss['owner'] = uid
+    discuss['time'] = format_time
+    discuss['content'] = content
+    discuss['status'] = 'public'
+    discuss['timestamp'] = local_time
+    discuss['parent'] = parent
+    c_discuss.insert_one(discuss)
+    c_discuss.update_one({'id':parent},{'$set':{'comments':c_discuss.find_one({'id':parent})['comments']+1,'lastcommenttime':format_time,'lastcommenter':uid}})
+    return jsonify({'status':'200','message':'/discuss/' + str(parent)})
 
 
 def find_discuss(condition, page=0):
