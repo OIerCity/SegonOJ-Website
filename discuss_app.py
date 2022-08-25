@@ -124,10 +124,23 @@ def discuss_post():
         return jsonify({'status':403,'message':'标题不能为空'})
     if len(title) > 18:
         return jsonify({'status':403,'message':'标题不能超过18个字'})
-    if forum is 'announcements' and user['state'] is not 'admin':
+    if forum is 'announcement' and user['state'] is not 'admin':
         return jsonify({'status':403,'message':'您无权限在此处发帖'})
     if forum != 'water' and forum != 'site' and forum != 'problem' and forum != 'academics' and forum != 'service' and forum != 'announcement':
         return jsonify({'status':403,'message':'板块未找到'})
+    forumname = ''
+    if forum is 'announcement':
+        forumname = '公告板'
+    elif forum is 'water':
+        forumname = '划水版'
+    elif forum is 'site':
+        forumname = '站务版'
+    elif forum is 'problem':
+        forumname = '题目总版'
+    elif forum is 'academics':
+        forumname = '学术版'
+    else:
+        forumname = '反馈版'
     discuss = {}
     local_time = time.time()
     format_time = time.strftime('%Y.%m.%d %H:%M')
@@ -146,6 +159,7 @@ def discuss_post():
     discuss['parent'] = 0
     discuss['id'] = last_id + 1
     discuss['comments'] = 0
+    discuss['forumname'] = forumname
     c_discuss.insert_one(discuss)
     c_last.update_one({},{'$set':{'discussid':last_id + 1}})
     return jsonify({'status':'200','message':'/discuss/' + str(last_id + 1)})

@@ -233,110 +233,94 @@
                                         <tr>
                                             <td>
                                                 <div class="cell">
-                                                    <div class="cell title tmzb">
-                                                        <a style="color:white;text-align: left;">本地 AC 提...</a>
+                                                    <div class="cell title {{ t_lastdiscuss.A.forum }}">
+                                                        <a style="color:white;text-align: left;" href="/discuss/{{t_lastdiscuss.A.id}}">{{ t_lastdiscuss.A.title}}</a>
                                                         <span style="color:white;float: right;">in&nbsp;<a
-                                                                style="color:#565656;">题目总版</a></span>
+                                                                style="color:#565656;">{{ t_lastdiscuss.A.forumname
+                                                                }}</a></span>
                                                     </div>
                                                     <div style="padding: 0px 15px 5px 15px;">
                                                         <span>楼主&nbsp;
-                                                            <div class="user-info">
-                                                                <span class="sgoj-red"
-                                                                    style="font-size:18px;">yyandy</span>
-                                                            </div>
-                                                        </span>
-                                                        <br>
-                                                        <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">三十年后的小杨这题好难......</span></span><br>
-                                                        <span>评论&nbsp;<span
-                                                                style="color: #FF8F1F;font-size:18px;">32123条</span></span><br>
-                                                        <span>最新评论&nbsp;<div class="user-info">
-                                                                <span class="sgoj-orange"
-                                                                    style="font-size:18px;">Hughpig</span>
-                                                            </div></span><br>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            &nbsp;&nbsp;
-                                            <td>
-                                                <div class="cell">
-                                                    <div class="cell title fkb">
-                                                        <a style="color:white;text-align: left;">举报 建议禁言</a>
-                                                        <span style="color:white;float: right;">in&nbsp;<a
-                                                                style="color:#565656;">反馈版</a></span>
-                                                    </div>
-                                                    <div style="padding: 0px 15px 5px 15px;">
-                                                        <span>楼主&nbsp;
-                                                            <div class="user-info">
-                                                                <span class="sgoj-green"
-                                                                    style="font-size:18px;">2735abc</span>
-                                                            </div>
-                                                        </span>
-                                                        <br>
-                                                        <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">262620zzj
-                                                                这个人wyytl</span></span><br>
-                                                        <span>评论&nbsp;<span
-                                                                style="color: #FF8F1F;font-size:18px;">857857条</span></span><br>
-                                                        <span>最新评论&nbsp;<div class="user-info">
-                                                                <span class="sgoj-blue"
-                                                                    style="font-size:18px;">Cindy姚</span>
-                                                            </div></span><br>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="cell">
-                                                    <div class="cell title xsb">
-                                                        <a style="color:white;text-align: left;">I AK IOI</a>
-                                                        <span style="color:white;float: right;">in&nbsp;<a
-                                                                style="color:#565656;">学术版</a></span>
-                                                    </div>
-                                                    <div style="padding: 0px 15px 5px 15px;">
-                                                        <span>楼主&nbsp;
-                                                            <div class="user-info">
-                                                                <span class="sgoj-purple"
-                                                                    style="font-size:18px;">Caca_Condy</span>
-                                                            </div>
-                                                        </span>
-                                                        <br>
-                                                        <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">我爱6872!</span></span><br>
-                                                        <span>评论&nbsp;<span
-                                                                style="color: #FF8F1F;font-size:18px;">114514条</span></span><br>
-                                                        <span>最新评论&nbsp;<div class="user-info">
-                                                                <span class="sgoj-purple"
-                                                                    style="font-size:18px;">小杨小小杨</span>
-                                                            </div></span><br>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            &nbsp;&nbsp;
-                                            <td>
-                                                <div class="cell">
-                                                    <div class="cell title zwb">
-                                                        <a style="color:white;text-align: left;">铃酱可爱</a>
-                                                        <span style="color:white;float: right;">in&nbsp;<a
-                                                                style="color:#565656;">站务版</a></span>
-                                                    </div>
-                                                    <div style="padding: 0px 15px 5px 15px;">
-                                                        <span>楼主&nbsp;
-                                                            <div class="user-info">
+                                                            <div class="user-info" style="font-size:18px;">
+                                                                <span class="sgoj-{{t_lastdiscuss.A.owner.color}}">{{
+                                                                    t_lastdiscuss.A.owner.username }}</span>
+                                                                {% if t_lastdiscuss.A.owner.have_badge == 1 %}&nbsp;
                                                                 <span
-                                                                    style="color: #FA5151;font-size:18px;">Apathy_Cui</span>
+                                                                    class="badge sgoj-{{t_lastdiscuss.A.owner.color}}">
+                                                                    {{ t_lastdiscuss.A.owner.userbadge }}</span>
+                                                                {% endif %}
                                                             </div>
                                                         </span>
                                                         <br>
-                                                        <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">铃酱怎么这么强而且可爱啊...</span></span><br>
-                                                        <span>评论&nbsp;<span
-                                                                style="color: #FF8F1F;font-size:18px;">2022条</span></span><br>
-                                                        <span>最新评论&nbsp;<div class="user-info">
-                                                                <span class="sgoj-green"
-                                                                    style="font-size:18px;">chenyuer</span>
-                                                            </div></span><br>
+                                                        <span>内容&nbsp;<br><span style="color:#666565;font-size:18px;">{{
+                                                                t_lastdiscuss.A.content }}</span></span><br>
+                                                        <span>回复&nbsp;<span style="color: #FF8F1F;font-size:18px;">{{
+                                                                t_lastdiscuss.A.comments }}条</span></span><br>
+                                                        <span>最新回复&nbsp;{% if t_lastdiscuss.A.comments == 0 %}
+                                                            暂无回复
+                                                            {% else %}
+
+                                                            最新回复：
+                                                            <div class="user-info" style="font-size:10px;">
+                                                                <span
+                                                                    class="sgoj-{{t_lastdiscuss.A.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.A.lastcommenter.username }}</span>
+                                                                {% if t_lastdiscuss.A.lastcommenter.have_badge == 1 %}
+                                                                &nbsp;<span
+                                                                    class="badge sgoj-{{t_lastdiscuss.A.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.A.lastcommenter.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+
+                                                        {% endif %}</span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title {{ t_lastdiscuss.B.forum }}">
+                                                        <a style="color:white;text-align: left;" href="/discuss/{{t_lastdiscuss.B.id}}">{{ t_lastdiscuss.B.title}}</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">{{ t_lastdiscuss.B.forumname
+                                                                }}</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info" style="font-size:18px;">
+                                                                <span class="sgoj-{{t_lastdiscuss.B.owner.color}}">{{
+                                                                    t_lastdiscuss.B.owner.username }}</span>
+                                                                {% if t_lastdiscuss.B.owner.have_badge == 1 %}&nbsp;
+                                                                <span
+                                                                    class="badge sgoj-{{t_lastdiscuss.B.owner.color}}">
+                                                                    {{ t_lastdiscuss.B.owner.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span style="color:#666565;font-size:18px;">{{
+                                                                t_lastdiscuss.B.content }}</span></span><br>
+                                                        <span>回复&nbsp;<span style="color: #FF8F1F;font-size:18px;">{{
+                                                                t_lastdiscuss.B.comments }}条</span></span><br>
+                                                        <span>最新回复&nbsp;{% if t_lastdiscuss.B.comments == 0 %}
+                                                            暂无回复
+                                                            {% else %}
+
+                                                            最新回复：
+                                                            <div class="user-info" style="font-size:10px;">
+                                                                <span
+                                                                    class="sgoj-{{t_lastdiscuss.B.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.B.lastcommenter.username }}</span>
+                                                                {% if t_lastdiscuss.B.lastcommenter.have_badge == 1 %}
+                                                                &nbsp;<span
+                                                                    class="badge sgoj-{{t_lastdiscuss.B.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.B.lastcommenter.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+
+                                                        {% endif %}</span><br>
                                                     </div>
                                                 </div>
                                             </td>
@@ -344,54 +328,189 @@
                                         <tr>
                                             <td>
                                                 <div class="cell">
-                                                    <div class="cell title hsb">
-                                                        <a style="color:white;text-align: left;">说句闲话</a>
+                                                    <div class="cell title {{ t_lastdiscuss.C.forum }}">
+                                                        <a style="color:white;text-align: left;" href="/discuss/{{t_lastdiscuss.C.id}}">{{ t_lastdiscuss.C.title}}</a>
                                                         <span style="color:white;float: right;">in&nbsp;<a
-                                                                style="color:#565656;">划水池</a></span>
+                                                                style="color:#565656;">{{ t_lastdiscuss.C.forumname
+                                                                }}</a></span>
                                                     </div>
                                                     <div style="padding: 0px 15px 5px 15px;">
                                                         <span>楼主&nbsp;
-                                                            <div class="user-info">
-                                                                <span class="sgoj-green"
-                                                                    style="font-size:18px;">西市骤雨</span>
+                                                            <div class="user-info" style="font-size:18px;">
+                                                                <span class="sgoj-{{t_lastdiscuss.C.owner.color}}">{{
+                                                                    t_lastdiscuss.C.owner.username }}</span>
+                                                                {% if t_lastdiscuss.C.owner.have_badge == 1 %}&nbsp;
+                                                                <span
+                                                                    class="badge sgoj-{{t_lastdiscuss.A.owner.color}}">
+                                                                    {{ t_lastdiscuss.C.owner.userbadge }}</span>
+                                                                {% endif %}
                                                             </div>
                                                         </span>
                                                         <br>
-                                                        <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">研究柯学的最好方式就是看...</span></span><br>
-                                                        <span>评论&nbsp;<span
-                                                                style="color: #FF8F1F;font-size:18px;">998244353条</span></span><br>
-                                                        <span>最新评论&nbsp;<div class="user-info">
-                                                                <span class="sgoj-purple"
-                                                                    style="font-size:18px;">6872</span>
-                                                            </div></span><br>
+                                                        <span>内容&nbsp;<br><span style="color:#666565;font-size:18px;">{{
+                                                                t_lastdiscuss.C.content }}</span></span><br>
+                                                        <span>回复&nbsp;<span style="color: #FF8F1F;font-size:18px;">{{
+                                                                t_lastdiscuss.C.comments }}条</span></span><br>
+                                                        <span>最新回复&nbsp;{% if t_lastdiscuss.C.comments == 0 %}
+                                                            暂无回复
+                                                            {% else %}
+
+                                                            最新回复：
+                                                            <div class="user-info" style="font-size:10px;">
+                                                                <span
+                                                                    class="sgoj-{{t_lastdiscuss.C.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.C.lastcommenter.username }}</span>
+                                                                {% if t_lastdiscuss.C.lastcommenter.have_badge == 1 %}
+                                                                &nbsp;<span
+                                                                    class="badge sgoj-{{t_lastdiscuss.C.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.C.lastcommenter.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+
+                                                        {% endif %}</span><br>
                                                     </div>
                                                 </div>
                                             </td>
                                             &nbsp;&nbsp;
                                             <td>
                                                 <div class="cell">
-                                                    <div class="cell title hsb">
-                                                        <a style="color:white;text-align: left;">我要制裁极域</a>
+                                                    <div class="cell title {{ t_lastdiscuss.D.forum }}">
+                                                        <a style="color:white;text-align: left;" href="/discuss/{{t_lastdiscuss.D.id}}">{{ t_lastdiscuss.D.title}}</a>
                                                         <span style="color:white;float: right;">in&nbsp;<a
-                                                                style="color:#565656;">划水池</a></span>
+                                                                style="color:#565656;">{{ t_lastdiscuss.D.forumname
+                                                                }}</a></span>
                                                     </div>
                                                     <div style="padding: 0px 15px 5px 15px;">
                                                         <span>楼主&nbsp;
-                                                            <div class="user-info">
-                                                                <span class="sgoj-green"
-                                                                    style="font-size:18px;">sjr3065335594</span>
+                                                            <div class="user-info" style="font-size:18px;">
+                                                                <span class="sgoj-{{t_lastdiscuss.D.owner.color}}">{{
+                                                                    t_lastdiscuss.D.owner.username }}</span>
+                                                                {% if t_lastdiscuss.D.owner.have_badge == 1 %}&nbsp;
+                                                                <span
+                                                                    class="badge sgoj-{{t_lastdiscuss.D.owner.color}}">
+                                                                    {{ t_lastdiscuss.D.owner.userbadge }}</span>
+                                                                {% endif %}
                                                             </div>
                                                         </span>
                                                         <br>
-                                                        <span>内容&nbsp;<br><span
-                                                                style="color:#666565;font-size:18px;">消灭极域暴政，414属于gar...</span></span><br>
-                                                        <span>评论&nbsp;<span
-                                                                style="color: #FF8F1F;font-size:18px;">407407条</span></span><br>
-                                                        <span>最新评论&nbsp;<div class="user-info">
-                                                                <span class="sgoj-purple"
-                                                                    style="font-size:18px;">liucang</span>
-                                                            </div></span><br>
+                                                        <span>内容&nbsp;<br><span style="color:#666565;font-size:18px;">{{
+                                                                t_lastdiscuss.A.content }}</span></span><br>
+                                                        <span>回复&nbsp;<span style="color: #FF8F1F;font-size:18px;">{{
+                                                                t_lastdiscuss.A.comments }}条</span></span><br>
+                                                        <span>最新回复&nbsp;{% if t_lastdiscuss.D.comments == 0 %}
+                                                            暂无回复
+                                                            {% else %}
+
+                                                            最新回复：
+                                                            <div class="user-info" style="font-size:10px;">
+                                                                <span
+                                                                    class="sgoj-{{t_lastdiscuss.D.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.D.lastcommenter.username }}</span>
+                                                                {% if t_lastdiscuss.D.lastcommenter.have_badge == 1 %}
+                                                                &nbsp;<span
+                                                                    class="badge sgoj-{{t_lastdiscuss.D.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.D.lastcommenter.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+
+                                                        {% endif %}</span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title {{ t_lastdiscuss.E.forum }}">
+                                                        <a style="color:white;text-align: left;" href="/discuss/{{t_lastdiscuss.E.id}}">{{ t_lastdiscuss.E.title}}</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">{{ t_lastdiscuss.E.forumname
+                                                                }}</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info" style="font-size:18px;">
+                                                                <span class="sgoj-{{t_lastdiscuss.E.owner.color}}">{{
+                                                                    t_lastdiscuss.E.owner.username }}</span>
+                                                                {% if t_lastdiscuss.E.owner.have_badge == 1 %}&nbsp;
+                                                                <span
+                                                                    class="badge sgoj-{{t_lastdiscuss.E.owner.color}}">
+                                                                    {{ t_lastdiscuss.E.owner.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span style="color:#666565;font-size:18px;">{{
+                                                                t_lastdiscuss.E.content }}</span></span><br>
+                                                        <span>回复&nbsp;<span style="color: #FF8F1F;font-size:18px;">{{
+                                                                t_lastdiscuss.E.comments }}条</span></span><br>
+                                                        <span>最新回复&nbsp;{% if t_lastdiscuss.E.comments == 0 %}
+                                                            暂无回复
+                                                            {% else %}
+
+                                                            最新回复：
+                                                            <div class="user-info" style="font-size:10px;">
+                                                                <span
+                                                                    class="sgoj-{{t_lastdiscuss.E.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.E.lastcommenter.username }}</span>
+                                                                {% if t_lastdiscuss.E.lastcommenter.have_badge == 1 %}
+                                                                &nbsp;<span
+                                                                    class="badge sgoj-{{t_lastdiscuss.E.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.E.lastcommenter.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+
+                                                        {% endif %}</span><br>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            &nbsp;&nbsp;
+                                            <td>
+                                                <div class="cell">
+                                                    <div class="cell title {{ t_lastdiscuss.F.forum }}">
+                                                        <a style="color:white;text-align: left;" href="/discuss/{{t_lastdiscuss.F.id}}">{{ t_lastdiscuss.F.title}}</a>
+                                                        <span style="color:white;float: right;">in&nbsp;<a
+                                                                style="color:#565656;">{{ t_lastdiscuss.F.forumname
+                                                                }}</a></span>
+                                                    </div>
+                                                    <div style="padding: 0px 15px 5px 15px;">
+                                                        <span>楼主&nbsp;
+                                                            <div class="user-info" style="font-size:18px;">
+                                                                <span class="sgoj-{{t_lastdiscuss.F.owner.color}}">{{
+                                                                    t_lastdiscuss.F.owner.username }}</span>
+                                                                {% if t_lastdiscuss.F.owner.have_badge == 1 %}&nbsp;
+                                                                <span
+                                                                    class="badge sgoj-{{t_lastdiscuss.A.owner.color}}">
+                                                                    {{ t_lastdiscuss.F.owner.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+                                                        <br>
+                                                        <span>内容&nbsp;<br><span style="color:#666565;font-size:18px;">{{
+                                                                t_lastdiscuss.F.content }}</span></span><br>
+                                                        <span>回复&nbsp;<span style="color: #FF8F1F;font-size:18px;">{{
+                                                                t_lastdiscuss.F.comments }}条</span></span><br>
+                                                        <span>最新回复&nbsp;{% if t_lastdiscuss.A.comments == 0 %}
+                                                            暂无回复
+                                                            {% else %}
+
+                                                            最新回复：
+                                                            <div class="user-info" style="font-size:10px;">
+                                                                <span
+                                                                    class="sgoj-{{t_lastdiscuss.F.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.F.lastcommenter.username }}</span>
+                                                                {% if t_lastdiscuss.F.lastcommenter.have_badge == 1 %}
+                                                                &nbsp;<span
+                                                                    class="badge sgoj-{{t_lastdiscuss.F.lastcommenter.color}}">
+                                                                    {{ t_lastdiscuss.F.lastcommenter.userbadge }}</span>
+                                                                {% endif %}
+                                                            </div>
+                                                        </span>
+
+                                                        {% endif %}</span><br>
                                                     </div>
                                                 </div>
                                             </td>
@@ -403,6 +522,7 @@
                                         <span style="font-size:36px;">比赛</span> / Contest
                                         <tr>
                                             <td>
+
                                                 <div class="cell">
                                                     <div class="cell title tmzb">
                                                         <a style="color:white;text-align: left;">本地 AC 提...</a>
@@ -427,6 +547,7 @@
                                                             </div></span><br>
                                                     </div>
                                                 </div>
+
                                             </td>
                                             &nbsp;&nbsp;
                                             <td>
@@ -577,14 +698,16 @@
                         <span style="font-size:36px;">公告</span> / Announcements
                         <hr>
                         {% for item in t_announcements %}
-                        
-                        <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{item.usercolor}}" style="font-size: 18px">{{ item.username }}</span>
-                        {% if item.userhavebadge == True %}
-                        <span class="badge sgoj-{{item.usercolor}}" style="font-size: 18px">&nbsp;{{ item.userbadge
-                            }}&nbsp;</span>{% if item.sticky == 1 %}&nbsp;<span class="badge sgoj-red" style="font-size: 18px;">&nbsp;置顶&nbsp;</span>{% endif %}
+
+                        <span>{{ item.title }} / {{ item.time }} / <span class="sgoj-{{item.usercolor}}"
+                                style="font-size: 18px">{{ item.username }}</span>
+                            {% if item.userhavebadge == True %}
+                            <span class="badge sgoj-{{item.usercolor}}" style="font-size: 18px">&nbsp;{{ item.userbadge
+                                }}&nbsp;</span>{% if item.sticky == 1 %}&nbsp;<span class="badge sgoj-red"
+                                style="font-size: 18px;">&nbsp;置顶&nbsp;</span>{% endif %}
                             <hr>
-                        {% endif %}
-                        {% endfor %}
+                            {% endif %}
+                            {% endfor %}
                     </div>
                 </div>
 
@@ -639,7 +762,9 @@
                                         <span style="float: right;margin-right: 5%;"
                                             class="sgoj-ac">&nbsp;&nbsp;AC&nbsp;&nbsp;</span>
                                         <hr>
-                                        <a class="sgoj-ac" style="font-size:18px;">&nbsp;&nbsp;显示已完成&nbsp;&nbsp;</a>&nbsp;<a class="sgoj-wa" style="font-size:18px;">&nbsp;&nbsp;隐藏已完成&nbsp;&nbsp;</a>
+                                        <a class="sgoj-ac"
+                                            style="font-size:18px;">&nbsp;&nbsp;显示已完成&nbsp;&nbsp;</a>&nbsp;<a
+                                            class="sgoj-wa" style="font-size:18px;">&nbsp;&nbsp;隐藏已完成&nbsp;&nbsp;</a>
                                     </div>
 
                                 </div>

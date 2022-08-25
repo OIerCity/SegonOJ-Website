@@ -193,23 +193,27 @@ ol, ul, li {
     color: #FFF;
 }
 
-.cell.tmzb{
+.cell.problem{
     background-image: linear-gradient(to right,#00DE72,rgb(160,239,200));
 }
 
-.cell.fkb{
+.cell.service{
     background-image: linear-gradient(to right,#DE00C0,rgb(242,162,231));
 }
 
-.cell.xsb{
+.cell.academics{
     background-image: linear-gradient(to right,#00DE72,rgb(160,239,200));
 }
 
-.cell.hsb{
+.cell.water{
     background-image: linear-gradient(to right,#3662EC,rgb(170,188,246));
 }
 
-.cell.zwb{
+.cell.site{
+    background-image: linear-gradient(to right,#FFC300,rgb(255,231,156));
+}
+
+.cell.announcement{
     background-image: linear-gradient(to right,#FFC300,rgb(255,231,156));
 }
 
