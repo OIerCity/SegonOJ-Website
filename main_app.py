@@ -41,7 +41,7 @@ def welcome():
     rankTopersUserInfo['top3'] = c_user.find_one({'uid': rankTopers['top3']})
     rankTopersUserInfo['top4'] = c_user.find_one({'uid': rankTopers['top4']})
     rankTopersUserInfo['top5'] = c_user.find_one({'uid': rankTopers['top5']})
-    lastDiscussInfo = []
+    lastDiscussInfo = {}
     discussA = c_discuss.find_one({'id':c_last.find_one({})['discussid']})
     discussA['owner'] = c_user.find_one({'uid':discussA['owner']})
     discussA['lastcommenter'] = c_user.find_one({'uid':discussA['lastcommenter']})
