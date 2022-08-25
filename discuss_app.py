@@ -155,6 +155,7 @@ def comment_post():
     content = request.form['content']
     captcha = request.form['captcha']
     parent = request.form['parent']
+    parent = int(parent)
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
