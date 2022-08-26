@@ -76,6 +76,9 @@ def register_check():
     pwd = request.form['password']
     email = request.form['email']
     verify_code = request.form['verify_code']
+    rcode = request.form['rcode']
+    if rcode is not 'Y9sj)j-0Jo9%_1M.*j.>':
+        return jsonify({'status':403,'message':'授权码错误，请联系QQ3060272052（liucang）'})
     whitelist_str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"
     e_verify = c_verify.find_one({'email': email, 'passed': 'yes', 'used': 'no', 'verify_code': verify_code})
     if e_verify is None:

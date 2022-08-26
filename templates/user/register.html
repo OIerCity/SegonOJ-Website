@@ -73,6 +73,8 @@
                         <br><br>
                         <input type="password" id="password" placeholder="密码" class="registerinput">
                         <br><br>
+                        <input type="text" id="rcode" placeholder="授权码" class="registerinput">
+                        <br><br>
                         <button class="submit login" id="submit">注册</button>
                         <br>
                         {% else %}
@@ -105,7 +107,7 @@
             email = '{{t_email}}'
             verify_code = '{{t_verify_code}}'
             document.getElementById("submit").onclick=function(){
-                $.post("/api/register_check",{"username": document.getElementById('username').value, "password": document.getElementById('password').value, "email": email, "verify_code": verify_code},
+                $.post("/api/register_check",{"username": document.getElementById('username').value, "password": document.getElementById('password').value, "email": email, "verify_code": verify_code, "rcode":document.getElementById('rcode').value},
                     function(message){
                         alert(message.message);
                         if(message.status==200){
