@@ -41,6 +41,10 @@ nav:hover{
     box-shadow: 5px 5px 14px #00000099;
 }
 
+* {
+    opacity: 1.0;
+}
+
 .logo-long {
     display: inline-block;
     height: 72px;
