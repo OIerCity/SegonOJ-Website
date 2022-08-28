@@ -16,6 +16,11 @@ a {
 body {
     /* font-family: "San Francisco Display", "Inconsolata", "Courier New", "Consolas", "Arial"; */
     font-family: Sans-Regular;
+    background-image: url(/static/general/img/bkg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 /* 侧边栏 */
