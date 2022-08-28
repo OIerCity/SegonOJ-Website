@@ -16,6 +16,11 @@ a {
 body {
     /* font-family: "San Francisco Display", "Inconsolata", "Courier New", "Consolas", "Arial"; */
     font-family: Sans-Regular;
+    background-image: url(/static/general/img/bkg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 /* 侧边栏 */
@@ -34,6 +39,10 @@ nav {
 nav:hover{
     transform: translate(-2.5px,-2.5px);
     box-shadow: 5px 5px 14px #00000099;
+}
+
+* {
+    opacity: 1.0;
 }
 
 .logo-long {
