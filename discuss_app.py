@@ -22,6 +22,23 @@ c_last = db_discuss['last']
 per_page = 20
 page_limit = 2000
 
+def check_captcha(input_captcha, real_captcha):
+    if len(input_captcha) != len(real_captcha):
+        return False
+    else:
+        for i in range(len(real_captcha)):
+            if real_captcha[i].islower() or real_captcha[i].isupper():
+                if input_captcha[i].lower() == real_captcha[i].lower():
+                    continue
+                else:
+                    return False
+            else:
+                if input_captcha[i] == real_captcha[i]:
+                    continue
+                else:
+                    return False
+    
+    return True
 
 @discuss_app.before_request
 def before_request():
@@ -105,23 +122,6 @@ def discuss_view(id):
         )
         comment_list.append(item)
     return render_template('discuss/discuss.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_comment_list=comment_list, t_discuss=discuss,t_parent=id)
-
-def check_captcha(input_captcha, real_captcha):
-    if len(input_captcha) != len(real_captcha):
-        return False
-    else:
-        for i in range(len(real_captcha)):
-            if real_captcha[i].islower() or real_captcha[i].isupper():
-                if input_captcha[i].lower() == real_captcha[i].lower():
-                    continue
-                else:
-                    return False
-            else:
-                if input_captcha[i] == real_captcha[i]:
-                    continue
-                else:
-                    return False
-    return True
 
 @discuss_app.route('/api/post_discuss', methods=['POST'])
 def discuss_post():
