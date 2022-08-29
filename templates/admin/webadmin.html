@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SegonOJ - 主页</title>
+    <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<script src="/static/board/js/markdown-palettes.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+    integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+    integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true },
+                { left: "\\begin{equation}", right: "\\end{equation}", display: true },
+                { left: "\\begin{align}", right: "\\end{align}", display: true },
+                { left: "\\begin{alignat}", right: "\\end{alignat}", display: true },
+                { left: "\\begin{gather}", right: "\\end{gather}", display: true },
+                { left: "\\begin{CD}", right: "\\end{CD}", display: true },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            // • rendering keys, e.g.:
+            throwOnError: false
+        });
+    });
+</script>
+
+<body>
+    <div class="app">
+        <div>
+            <nav style="background-color: #fff; width: 100%;">
+                <div class="logo-long">
+                    <span>
+                        <a href="/">
+                            <img src="/static/general/img/logo-long.png" alt="SegonOJ-Logo" height="72" width="221">
+                        </a>
+
+                    </span>
+                </div>
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/problem.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/problemset.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/ranks.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/discuss.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon">
+                    <img src="/static/general/img/icon/app.png" alt="problem" height="30" width="30">
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if t_is_login %}
+                <div class="user-info">
+                    <span class="sgoj-{{t_usercolor}}">{{ t_username }}</span>
+                    {% if t_userhavebadge == True %}
+                    <span class="badge sgoj-{{t_usercolor}}">&nbsp;{{ t_userbadge }}&nbsp;</span>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="user-info">
+                    <a href="/login">登录</a>
+                    &nbsp;/&nbsp;
+                    <a href="/register">注册</a>
+                </div>
+                {% endif %}
+
+
+
+            </nav>
+        </div>
+        <div class="main-container">
+
+            <div class="app-main">
+                <div class="index-content">
+                    <div class="mod">
+                        <br>
+                        <span style="font-size:36px;">后台公告版</span> / Admin Centre Announcements
+                        <hr>
+
+                        <span>后台使用方法 / 2022.08.18 17:18 / <span class="sgoj-purple"
+                                style="font-size: 18px">6872</span>
+                            <span class="badge sgoj-purple" style="font-size: 18px">&nbsp;Sestt&nbsp;</span>&nbsp;<span class="badge sgoj-red"
+                                style="font-size: 18px;">&nbsp;置顶&nbsp;</span>
+                            <hr>
+                        <br>
+                    </div>
+                </div>
+                <div class="index-content">
+                    <div class="mod">
+                        <table style="width: 100%;">
+                            <tr style="width: 100%;">
+                                <td style="width: 30%;text-align:center;vertical-align:top;">
+                                    <span style="font-size:36px;font-weight:bold;">用户统计</span>
+                                    <br><br>
+                                    <span style="font-size:36px;">20&nbsp;用户</span>
+                                    <br>
+                                    <span style="font-size:36px;font-weight:bold;">13&nbsp;<span style="color:#8013c4;">管理员</span></span>
+                                    <br><br><br>
+                                    <span style="font-size:36px;color:#0044ff;">较昨天增长 2 用户</span>
+                                </td>
+                                <td style="width: 30%;text-align:center;vertical-align:top;">
+                                    <span style="font-size:36px;font-weight:bold;">题目统计</span>
+                                    <br><br><br>
+                                    <span style="font-size:36px;font-weight:bold;">357&nbsp;题</span>
+                                    <br><br><br><br>
+                                    <span style="font-size:36px;color:#0044ff;">较昨天增长 28 题目</span>
+                                </td>
+                                <td style="width: 30%;text-align:center;vertical-align:top;">
+                                    <span style="font-size:36px;font-weight:bold;">比赛统计</span>
+                                    <br><br>
+                                    <span style="font-size:36px;">10&nbsp;比赛</span>
+                                    <br>
+                                    <span style="font-size:36px;font-weight:bold;">3&nbsp;Rated</span>
+                                    <br><br><br>
+                                    <span style="font-size:36px;color:#0044ff;">较昨天增长 1 比赛</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="index-content">
+                    <div class="mod">
+                        <span style="font-size:36px;font-weight:bold;">管理面板</span> / Admin Menu
+                            <table style="width: 70%;margin-left:5%;" cellpadding="20px">
+                                <tr style="width: 100%;">
+                                    <td style="width: 30%;vertical-align:top;">
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/home.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#6F00FF;font-size:28px;">主页</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/announcements.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">公告管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/carousel.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">轮播图管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/links.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">链接管理</span></a>
+                                        <br><br>
+                                        <img src="/static/general/img/admin/icon/problem.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#1cabed;font-size:28px;">题目</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/problem.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题目管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/problemaudit.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题目审核</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/translate.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">翻译管理</span></a>
+                                        <br>
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/problemset.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#14c417;font-size:28px;">题单</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/problem.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题单管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/problemsetaudit.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题单审核</span></a>
+                                    </td>
+                                    <td style="width: 30%;vertical-align:top;">
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/solution.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#eaff00;font-size:28px;">题解</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/solution.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题解管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/solutionaudit.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题解审核</span></a>
+                                        <br>
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/contest.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#ff8400;font-size:28px;">比赛</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/contest.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">比赛管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/contestaudit.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">比赛审核</span></a>
+                                        <br>
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/user.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#ff0000;font-size:28px;">用户</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/user.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">用户管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/award.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">奖项管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/execution.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">公开处刑</span></a>
+                                        
+                                    </td>
+                                    <td style="width: 30%;vertical-align:top;">
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/community.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#ff00bb;font-size:28px;">社区</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/solution.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">题解管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/discuss.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">讨论管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/team.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">团队管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/chat.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">私信管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/reportaudit.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">举报处理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/experience.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">SE经验管理</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/holiday.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">节日特效设置</span></a>
+                                        <br>
+                                        <br>
+                                        <img src="/static/general/img/admin/icon/database.png" width="30px" height="30px" style="vertical-align:top;">&nbsp;<span style="color:#00ffd4;font-size:28px;">数据库及其他</span>
+                                        <br>
+                                        <img src="/static/general/img/icon/line.png">
+                                        <br>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;"><img src="/static/general/img/admin/database.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">进入数据库</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/information.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">OJ信息设置</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/terminal.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">终端</span></a>
+                                        <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#000;margin-top:10px;display:inline-block;"><img src="/static/general/img/admin/notice.png" style="vertical-align:middle;">&nbsp;&nbsp;<span style="font-size:28px;vertical-align:middle;">通知管理</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+                <div class="index-content">
+                    <div class="footer">
+                        <div style="display: inline-block;">
+                            <br>
+                            <img src="/static/general/img/logo-long.png" alt="SegonOJ-Logo" height="72" width="221"
+                                style="margin-left: -10px;margin-top: -30px;">
+                            <br>
+                            <span>&lt;v1.0 in Test&gt;</span>
+                            <br>
+                            <span>Powered 2022, SegonOJ Develop Team.</span>
+                            <br>
+                            <span>Copyright © 2022 SegonOJ Develop Team. All rights reserved.</span>
+                        </div>
+                        <div style="display: inline-block; float: right">
+                            <br>
+                            <span>其他 Online Judge</span>
+                            <br>
+                            <span>
+                                <a href="https://www.luogu.com.cn/">洛谷</a> | <a
+                                    href="https://codeforces.com/">CodeForces</a> | <a
+                                    href="https://atcoder.jp/">AtCoder</a> |
+                                <br>
+                                <a href="https://hydro.ac/">HydroOJ</a> | <a href="https://loj.ac/">LOJ</a> | <a
+                                    href="https://vijos.org/">Vijos</a> | <a href="https://www.spoj.com/">SPOJ</a> |
+                                <br>
+                                <a href="https://onlinejudge.org/">UVA</a> | <a href="http://usaco.org/">USACO</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 次掉6872 -->
+    <script>
+        var c = 0, d = 0;
+        function a(t) {
+            if (t == 1) {
+                d = 1;
+                b(1);
+            }
+            if (t == 2) {
+                setTimeout("b(2)", 1000);
+            }
+            if (t == 3) {
+                c = 1;
+                b(1);
+            }
+            if (t == 4) {
+                c = 0;
+                setTimeout("b(2)", 1000);
+            }
+        }
+        function b(t) {
+            if (t == 1 && d == 1) {
+                document.getElementById("dropdown").style = "opacity: 1.0; display:block;";
+            }
+            if (t == 2) {
+                if (c == 0) {
+                    document.getElementById("dropdown").style = "opacity: 0.0;";
+                    d = 0;
+                }
+            }
+        }
+        function jump(t) {
+            window.location.href = t;
+        }
+        function htmlRestore(str) {
+            var s = ``;
+            if (str.length === 0) {
+                return ``;
+            }
+            s = str.replace(/&amp;/g, "&");
+            s = s.replace(/&lt;/g, "<");
+            s = s.replace(/&gt;/g, ">");
+            s = s.replace(/&nbsp;/g, " ");
+            s = s.replace(/&#39;/g, "\'");
+            s = s.replace(/&quot;/g, "\"");
+            return s;
+        }
+    </script>
+</body>

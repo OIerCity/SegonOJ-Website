@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, session, jsonify
 import pymongo
+import user_app
 
 admin_app = Blueprint('admin_app', __name__)
 
@@ -8,6 +9,23 @@ db_admin = client['onlinejudge']
 c_user = db_admin['user']
 c_web = db_admin['web']
 
+@admin_app.before_request
+def before_request():
+    if user_app.check_login():
+        return redirect('/login')
+    if user_app.check_user():
+        return redirect('/')
+
+
+@admin_app.route('/webadmin')
+def webadmin():
+    username = session.get('username')
+    user = c_user.find_one({'username': username})
+    if user['state']=='admin':
+        is_admin = True
+    if is_admin:
+        return render_template('admin/webadmin.html')
+    else: return redirect('/')
 
 @admin_app.route('/countrank')
 def count_rank():
