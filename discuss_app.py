@@ -1,14 +1,9 @@
-from curses.ascii import isdigit, islower, isupper
-from email import message
-import json
-from threading import local
 from flask import Blueprint, render_template, request, redirect, session, jsonify
 from flask_pagination import Pagination
 import pymongo
 import user_app
 import markdown
 import time
-from difflib import SequenceMatcher
 
 
 discuss_app = Blueprint('discuss_app', __name__)
