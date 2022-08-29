@@ -1,4 +1,5 @@
 from curses.ascii import isdigit, islower, isupper
+from email import message
 import json
 from threading import local
 from flask import Blueprint, render_template, request, redirect, session, jsonify
@@ -25,6 +26,7 @@ page_limit = 2000
 def check_captcha(input_captcha, real_captcha):
     if len(input_captcha) != len(real_captcha):
         return False
+    
     else:
         for i in range(len(real_captcha)):
             if real_captcha[i].islower() == True or real_captcha[i].isupper() == True:
@@ -32,6 +34,7 @@ def check_captcha(input_captcha, real_captcha):
                     continue
                 else:
                     return False
+            
             else:
                 if input_captcha[i] == real_captcha[i]:
                     continue
@@ -188,9 +191,14 @@ def comment_post():
     parent = int(parent)
     username = session.get('username')
     user = c_user.find_one({'username':username})
+    message='验证码错误，正确验证码：'
     uid=user['uid']
-    if check_captcha(captcha, c_captcha.find_one({'uid':uid})['captcha']) == False:
-        return jsonify({'status':403,'message':'验证码错误'})
+    right_captcha=c_captcha.find_one({'uid':uid})['captcha']
+    if check_captcha(captcha, right_captcha) == False:
+        message += right_captcha
+        message += '您输入的验证码：'
+        message += captcha
+        return jsonify({'status':403,'message':message})
     if c_discuss.find_one({'id':parent}) == None:
         return jsonify({'status':403,'message':'帖子未找到'})
     if content == '':
