@@ -26,6 +26,7 @@ def check_captcha(input_captcha, real_captcha):
     if len(input_captcha) != len(real_captcha):
         return False
     else:
+        for i in range(len(real_captcha)):
             if real_captcha[i].islower() == True or real_captcha[i].isupper() == True:
                 if input_captcha[i].lower() == real_captcha[i].lower():
                     continue
