@@ -136,17 +136,17 @@ def discuss_post():
     user = c_user.find_one({'username':username})
     uid=user['uid']
     if check_captcha(captcha, c_captcha.find_one({'uid':uid})['captcha']) == False:
-        return jsonify({'status':403,'message':'验证码错误'})
+        return jsonify({'status':403,'message':'403验证码错误'})
     if content == '':
-        return jsonify({'status':403,'message':'内容不能为空'})
+        return jsonify({'status':403,'message':'403内容不能为空'})
     if title == '':
-        return jsonify({'status':403,'message':'标题不能为空'})
+        return jsonify({'status':403,'message':'403标题不能为空'})
     if len(title) > 18:
-        return jsonify({'status':403,'message':'标题不能超过18个字'})
+        return jsonify({'status':403,'message':'403标题不能超过18个字'})
     if forum is 'announcement' and user['state'] is not 'admin':
-        return jsonify({'status':403,'message':'您无权限在此处发帖'})
+        return jsonify({'status':403,'message':'403您无权限在此处发帖'})
     if forum != 'water' and forum != 'site' and forum != 'problem' and forum != 'academics' and forum != 'service' and forum != 'announcement':
-        return jsonify({'status':403,'message':'板块未找到'})
+        return jsonify({'status':403,'message':'403板块未找到'})
     forumname = ''
     if forum is 'announcement':
         forumname = '公告板'
@@ -191,18 +191,13 @@ def comment_post():
     parent = int(parent)
     username = session.get('username')
     user = c_user.find_one({'username':username})
-    message='验证码错误，正确验证码：'
     uid=user['uid']
-    right_captcha=c_captcha.find_one({'uid':uid})['captcha']
-    if check_captcha(captcha, right_captcha) == False:
-        message += right_captcha
-        message += '您输入的验证码：'
-        message += captcha
-        return jsonify({'status':403,'message':message})
+    if check_captcha(captcha, c_captcha.find_one({'uid':uid})['captcha']) == False:
+        return jsonify({'status':403,'message':'403验证码错误'})
     if c_discuss.find_one({'id':parent}) == None:
-        return jsonify({'status':403,'message':'帖子未找到'})
+        return jsonify({'status':403,'message':'403帖子未找到'})
     if content == '':
-        return jsonify({'status':403,'message':'内容不能为空'})
+        return jsonify({'status':403,'message':'403内容不能为空'})
     discuss = {}
     local_time = time.time()
     format_time = time.strftime('%Y.%m.%d %H:%M')
