@@ -15,6 +15,11 @@ def before_request():
         return redirect('/login')
     if user_app.check_user():
         return redirect('/')
+    username = session.get('username')
+    user = c_user.find_one({'username': username})
+    if user['state']!="admin":
+        return redirect('/')
+    
 
 
 @admin_app.route('/webadmin')
@@ -23,6 +28,12 @@ def webadmin():
     user = c_user.find_one({'username': username})
     if user['state']=='admin':
         is_admin = True
+    is_admin = False
+    if user['state']=='admin':
+        is_admin = True
+    userhavebadge = False
+    if user['have_badge']:
+        userhavebadge = True
     if is_admin:
         return render_template('admin/webadmin.html')
     else: return redirect('/')
