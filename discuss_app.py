@@ -93,7 +93,7 @@ def discuss_view(id):
     discuss['content'] = markdown.markdown(
         discuss['content'],extensions=["fenced_code", "tables", "codehilite"]
     )
-    alist = find_discuss(condition, page)
+    alist = find_comment(condition, page)
     comment_list = []
     for item in alist:
         owner = item['owner']
