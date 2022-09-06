@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="/static/general/css/theme-SegonOJ-v1.0.0.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" type="text/css" href="/static/general/markdown/markdown-palettes.css">
     <script src="/static/general/markdown/markdown-palettes.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
@@ -41,6 +40,7 @@
         });
     </script>
 </head>
+
 
 <body>
     <div class="app">
@@ -114,60 +114,38 @@
 
             <div class="app-main">
                 <div class="index-content">
-
+                    <br><br>
+                    <span style="font-size: 42px;margin-left:10%;">
+                        {{ t_discuss.title }}
+                    </span>
+                    <br>
+                    <br>
                     <div class="mod" style="display: inline-block; width:75%;">
-                        <span style="font-size:36px;">讨论</span> / Discuss
-                        <br>
-                        <hr>
-                        {% for item in t_discuss_list %}
-                        <div>
-                            <div style="display: inline-block;max-width: 120px;">
-                                <img width="50px" height="50px"
+                        <div style="display: inline-block;">
+                            <img width="50px" height="50px"
                                     style="border-radius: 15px;box-shadow: 5px 5px 10px #ccc;display: inline-block;"
-                                    src="/static/upload/avater/1.png">
-                                <span>
-                                    <div class="user-info" style="font-size:18px;">
-                                        <span class="sgoj-{{item.owner.color}}">{{ item.owner.username }}</span>
-                                        {% if item.owner.have_badge == 1 %}&nbsp;
-                                        <span class="badge sgoj-{{item.owner.color}}">
-                                            {{ item.owner.userbadge }}</span>
-                                        {% endif %}
-                                    </div>
-                                </span>
-                                <br>
-                                {% if item.sticky == 1 %}<span class="badge sgoj-red"
-                                    style="font-size: 18px;">置顶</span>&nbsp;{% endif %}<span
-                                    class="discuss-info">{{item.comments}}条回复</span>
-                            </div>
-
-                            <div style="display: inline-block; margin-left: 20%;vertical-align: top;margin-top: 12px;">
-                                <a href="/discuss/{{item.id}}">{{ item.title }}</a>
-                                <br>
-                                <span class="discuss-info">In&nbsp;<a>站务版</a>&nbsp;@{{ item.time }}</span>
-                            </div>
-
-                            <div style="display: inline-block; float: right;vertical-align: top;margin-top: 12px;">
-                                {% if item.comments == 0 %}
-                                <span class="discuss-info">暂无回复</span>
-                                {% else %}
-
-                                <span class="discuss-info">
-                                    最新回复：
-                                    <div class="user-info" style="font-size:10px;">
-                                        <span class="sgoj-{{item.lastcommenter.color}}">
-                                            {{ item.lastcommenter.username }}</span>
-                                        {% if item.lastcommenter.have_badge == 1 %}
-                                        &nbsp;<span class="badge sgoj-{{item.lastcommenter.color}}">{{ item.lastcommenter.userbadge }}</span>
-                                        {% endif %}
-                                    </div>
-                                </span>
-                                <br>
-                                <span class="discuss-info">@{{item.lastcommenttime}}</span>
-                                {% endif %}
-                            </div>
+                                    src="/static/general/img/icon/1.png">
+                            <span>
+                                <div class="user-info" style="font-size:18px;">
+                                    <span class="sgoj-{{t_discuss.owner.color}}">{{ t_discuss.owner.username }}</span>
+                                    {% if t_discuss.owner.have_badge == 1 %}&nbsp;
+                                    <span class="badge sgoj-{{t_discuss.owner.color}}">
+                                        {{ t_discuss.owner.userbadge }}</span>
+                                    {% endif %}
+                                </div>
+                            </span>
+                        </div>
+                        <div style="display: inline-block;float:right;font-size:18px;vertical-align:bottom;">
+                            <a href="javascript:jb()">举报</a>
+                            &nbsp;
+                            <a href="javascript:jb()">回复</a>
+                            <br>
+                            <span class="discuss-info" style="font-size: inherit;">
+                                @{{t_discuss.time}}
+                            </span>
                         </div>
                         <hr>
-                        {% endfor %}
+                        {{t_discuss.content|safe}}
                     </div>
                     <div class="mod" style="display: inline-block; float: right;">
                         <span>进入版块</span>
@@ -179,39 +157,63 @@
                         <br><br>
                         <a class="button" href="/discuss/list?forumname=service">反馈版</a>
                     </div>
-                    {% if t_canpost == 1 %}
+                    {% for item in t_comment_list %}
+                    <div class="mod" style="display: inline-block; width:75%;">
+                        <div style="display: inline-block;">
+                            <img width="50px" height="50px"
+                                    style="border-radius: 15px;box-shadow: 5px 5px 10px #ccc;display: inline-block;"
+                                    src="/static/general/upload/avater/1.png">
+                            <span>
+                                <div class="user-info" style="font-size:18px;">
+                                    <span class="sgoj-{{item.owner.color}}">{{ item.owner.username }}</span>
+                                    {% if item.owner.have_badge == 1 %}
+                                    <span class="badge sgoj-{{item.owner.color}}">
+                                        {{ item.owner.userbadge }}</span>
+                                    {% endif %}
+                                </div>
+                            </span>
+                        </div>
+                        <div style="display: inline-block;float:right;font-size:18px;vertical-align:bottom;">
+                            <a href="javascript:jb()">举报</a>
+                            &nbsp;
+                            <a href="javascript:jb()">回复</a>
+                            <br>
+                            <span class="discuss-info" style="font-size: inherit;">
+                                @{{item.time}}
+                            </span>
+                        </div>
+                        <hr>
+                        {{item.content|safe}}
+                    </div>
+                    {% endfor %}
                     <div class="mod"  style="display: inline-block; width:75%;">
                         <span style="font-size: 36px;">
-                            发帖
+                            回复
                         </span>
-                        <br>
-                        <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:100%;" placeholder="标题" id="title">
                         <br>
                         <div style="height:450px;font-size:18px;">
                             <div id="editor"></div>
                         </div>
                         <br>
-                        <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:162px;" placeholder="验证码" id="captcha"><img width="120px" height="48px" alt="验证码" src="/captcha">
+                        <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:162px;" placeholder="验证码" id="captcha"><img width="120px" height="48px" alt="验证码" src="/captcha" onclick="this.src=this.src+'?'+Math.random()">
                         <br><br>
-                        <a class="button sgoj-red" href="javascript:post_discuss()">发送</a>
+                        <a class="button sgoj-red" href="javascript:post_comment()">回帖</a>
                     </div>
-                    {% endif %}
+                    
                 </div>
             </div>
         </div>
     </div>
     </div>
     <!-- 次掉6872 -->
-    {% if t_canpost == 1 %}
     <script>
         var editor = new MarkdownPalettes('#editor');
         editor.content = ``;
-        var forumname = '{{t_forum}}'
-        function post_discuss(){
+        var parent = '{{t_parent}}'
+        function post_comment(){
             var content = editor.content;
-            var title = document.getElementById('title').value;
             var captcha = document.getElementById('captcha').value;
-            $.post('/api/post_discuss',{'forum':forumname,'content':content,'title':title,'captcha':captcha},
+            $.post('/api/post_comment',{'parent':parent,'content':content,'captcha':captcha},
             function(message){
                 if(message.status==200){
                     window.location.href=message.message;
@@ -221,5 +223,4 @@
             });
         }
     </script>
-    {% endif %}
 </body>
