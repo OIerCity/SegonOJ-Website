@@ -121,22 +121,22 @@ def discuss_post():
         return jsonify({'status':403,'message':'标题不能为空'})
     if len(title) > 18:
         return jsonify({'status':403,'message':'标题不能超过18个字'})
-    if forum is 'announcement' and user['state'] is not 'admin':
+    if forum == 'announcement' and user['state'] != 'admin':
         return jsonify({'status':403,'message':'您无权限在此处发帖'})
     if forum != 'water' and forum != 'site' and forum != 'problem' and forum != 'academics' and forum != 'service' and forum != 'announcement':
         return jsonify({'status':403,'message':'板块未找到'})
     forumname = ''
-    if forum is 'announcement':
+    if forum == 'announcement':
         forumname = '公告板'
-    if forum is 'water':
+    if forum == 'water':
         forumname = '划水版'
-    if forum is 'site':
+    if forum == 'site':
         forumname = '站务版'
-    if forum is 'problem':
+    if forum == 'problem':
         forumname = '题目总版'
-    if forum is 'academics':
+    if forum == 'academics':
         forumname = '学术版'
-    if forum is 'service':
+    if forum == 'service':
         forumname = '反馈版'
     discuss = {}
     local_time = time.time()
