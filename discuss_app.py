@@ -109,7 +109,7 @@ def discuss_post():
     content = request.form['content']
     title = request.form['title']
     captcha = request.form['captcha']
-    forum = request.form['forum']
+    forum = session.get('forum')
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
