@@ -50,15 +50,19 @@
                 <a class="top-icon">
                     <img src="/static/general/img/icon/app.png" alt="problem" height="30" width="30">
                 </a>
+                {% if t_is_admin %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="/static/general/img/icon/fg.png" height="45" width="27" class="fg">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="top-icon" href="/webadmin">
+                    <img src="/static/general/img/icon/admin.png" alt="admin" height="30" width="30">
+                </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="user-info">
                     <a href="/login">登录</a>
                     &nbsp;/&nbsp;
                     <a href="/register">注册</a>
                 </div>
-
-
-
             </nav>
         </div>
         <div class="main-container">
