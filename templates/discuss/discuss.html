@@ -199,6 +199,7 @@
                         <input type="text" style="font-size:18px;padding:10px;vertical-align:top;width:162px;" placeholder="验证码" id="captcha"><img width="120px" height="48px" alt="验证码" src="/captcha" onclick="this.src=this.src+'?'+Math.random()">
                         <br><br>
                         <a class="button sgoj-red" href="javascript:post_comment()">回帖</a>
+                        <a class="button sgoj-blue" href="javascript:delete_discuss()">删帖</a>
                     </div>
                     
                 </div>
@@ -222,6 +223,10 @@
                 }
                 alert(message.message);
             });
+        }
+
+        function delete_discuss(){
+            $.post('api/delete_discuss', {'id':parent});
         }
     </script>
 </body>
