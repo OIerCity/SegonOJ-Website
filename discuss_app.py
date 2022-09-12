@@ -221,6 +221,7 @@ def delete_discuss(id):
     discuss = c_discuss.find_one({'id': id})
     discuss['delete'] = 1
     c_discuss.update_one({'id':id},{'$set':{'delete':discuss['delete']}})
+    return jsonify({'status':'200','message':'/discuss/' + str(id)})
 
 def check_delete_discuss(id):
     discuss = c_discuss.find_one({'id': id})
