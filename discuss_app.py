@@ -216,9 +216,11 @@ def find_comment(condition, page=0):
         alist.append(item)
     return alist
 
+@discuss_app.route('/api/delete_discuss', methods=['POST'])
 def delete_discuss(id):
     discuss = c_discuss.find_one({'id': id})
     discuss['delete'] = 1
+    c_discuss.update_one({'id':discuss['id']},{'$set':{'delete':discuss['delete']}})
 
 def check_delete_discuss(id):
     discuss = c_discuss.find_one({'id': id})
