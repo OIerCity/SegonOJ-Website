@@ -86,6 +86,8 @@ def discuss_view(id):
     else:
         page = request.args.get('page')
     discuss = c_discuss.find_one({'id': id})
+    if discuss['state'] == 'deleted':
+        return redirect('/')
     owner = discuss['owner']
     lastcommenter = discuss['lastcommenter']
     discuss['owner'] = c_user.find_one({'uid': owner})
@@ -192,6 +194,16 @@ def comment_post():
     c_discuss.update_one({'id':parent},{'$set':{'comments':c_discuss.find_one({'id':parent})['comments']+1,'lastcommenttime':format_time,'lastcommenter':uid}})
     return jsonify({'status':'200','message':'/discuss/' + str(parent)})
 
+@discuss_app.route('/api/delete_discuss', methods=['POST'])
+def delete_discuss():
+    id = request.form.get('id')
+    discuss = c_discuss.find_one({'id': id})
+    if discuss == None:
+        return jsonify({'status':404,'message':'未找到帖子'})
+    if discuss['status'] == 'deleted':
+        return jsonify({'status':404,'message':'未找到帖子'})
+    c_discuss.update_one({'id':id},{'$set':{'status': 'deleted'}})
+    return jsonify({'status':200,'message':'/discuss/' + str(id)})
 
 def find_discuss(condition, page=0):
     if page == 0:
@@ -215,18 +227,3 @@ def find_comment(condition, page=0):
     for item in res:
         alist.append(item)
     return alist
-
-@discuss_app.route('/api/delete_discuss', methods=['POST'])
-def delete_discuss(id):
-    discuss = c_discuss.find_one({'id': id})
-    discuss['delete'] = 1
-    c_discuss.update_one({'id':id},{'$set':{'delete':discuss['delete']}})
-    return jsonify({'status':'200','message':'/discuss/' + str(id)})
-
-def check_delete_discuss(id):
-    discuss = c_discuss.find_one({'id': id})
-    
-    if discuss['delete'] == 1:
-        return jsonify({'status':403,'message':'帖子已删除'})
-    
-    return jsonify({'status':'200','message':'/discuss/' + str(id)})
