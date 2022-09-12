@@ -200,8 +200,9 @@
                         <br><br>
                         <a class="button sgoj-red" href="javascript:post_comment()">回帖</a>
 
-                        {% if t_username == t_discuss.owner.username %}
+                        {% if t_username == t_discuss.owner.username or t_is_admin %}
                         <a class="button sgoj-blue" href="javascript:delete_discuss()">删帖</a>
+                        {% endif %}
                     </div>
                     
                 </div>
