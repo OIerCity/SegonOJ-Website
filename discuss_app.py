@@ -196,7 +196,7 @@ def comment_post():
 
 @discuss_app.route('/api/delete_discuss', methods=['POST'])
 def delete_discuss():
-    id = request.form.get('id')
+    id = int(request.form.get('id'))
     discuss = c_discuss.find_one({'id': id})
     if discuss == None:
         return jsonify({'status':404,'message':'未找到帖子'})
