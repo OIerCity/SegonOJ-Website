@@ -86,7 +86,7 @@ def discuss_view(id):
     else:
         page = request.args.get('page')
     discuss = c_discuss.find_one({'id': id})
-    if discuss['state'] == 'deleted':
+    if discuss['status'] == 'deleted':
         return redirect('/')
     owner = discuss['owner']
     lastcommenter = discuss['lastcommenter']
