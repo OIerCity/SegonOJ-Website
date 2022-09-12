@@ -229,12 +229,13 @@
         }
 
         function delete_discuss(){
-            $.post('/api/delete_discuss', {'id':parent});
-
-            if(message.status==200){
-                window.location.href=message.message;
-                return;
-            }
+            $.post('/api/delete_discuss', {'id':parent},
+            function(message){
+                if(message.status==200){
+                    window.location.href=message.message;
+                    return;
+                }
+            });
         }
     </script>
 </body>
