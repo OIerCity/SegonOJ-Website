@@ -101,6 +101,7 @@ def discuss_view(id):
         item['content'] = markdown.markdown(
             item['content'],extensions=["fenced_code", "tables", "codehilite"]
         )
+        item['delete'] = 0
         comment_list.append(item)
     return render_template('discuss/discuss.html', t_is_login=True, t_is_admin=is_admin, t_userhavebadge=userhavebadge, t_userbadge=user['userbadge'], t_usercolor=user['color'], t_username=username, t_comment_list=comment_list, t_discuss=discuss,t_parent=id)
 
@@ -113,6 +114,7 @@ def discuss_post():
     username = session.get('username')
     user = c_user.find_one({'username':username})
     uid=user['uid']
+    
     if check_captcha(captcha, c_captcha.find_one({'uid':uid})['captcha']) == False:
         return jsonify({'status':403,'message':'验证码错误'})
     if content == '':
@@ -157,6 +159,7 @@ def discuss_post():
     discuss['id'] = last_id + 1
     discuss['comments'] = 0
     discuss['forumname'] = forumname
+    discuss['delete'] = 0
     c_discuss.insert_one(discuss)
     c_last.update_one({},{'$set':{'discussid':last_id + 1}})
     return jsonify({'status':'200','message':'/discuss/' + str(last_id + 1)})
@@ -212,3 +215,15 @@ def find_comment(condition, page=0):
     for item in res:
         alist.append(item)
     return alist
+
+def delete_discuss(id):
+    discuss = c_discuss.find_one({'id': id})
+    discuss['delete'] = 1
+
+def check_delete_discuss(id):
+    discuss = c_discuss.find_one({'id': id})
+    
+    if discuss['delete'] == 1:
+        return jsonify({'status':403,'message':'帖子已删除'})
+    
+    return jsonify({'status':'200','message':'/discuss/' + str(id)})
