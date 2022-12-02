@@ -34,7 +34,7 @@ def judge_queue():
 def submit_judge():
     if before_request():
         return jsonify({'status':'403','message':'用户未登录'})
-    if c_user.find_one({'username': session.get('username')})['last_judge'] - time.time() < 15:
+    if time.time() - c_user.find_one({'username': session.get('username')})['last_judge'] < 15:
         return jsonify({'status':'403','message':'提交过于频繁，请等15秒再试'})
     code = request.form.get('code')
     size = len(code)/1024.0
