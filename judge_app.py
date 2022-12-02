@@ -48,6 +48,6 @@ def submit_judge():
     rid = last_record+1
     c_last.update_one({}, {"$set": {'record': last_record + 1}})
     local_time = time.time()
-    c_user.update_one({'uid': session.get('uid')}, {"$set": {'last_judge': local_time}})
+    c_user.update_one({'username': session.get('username')}, {"$set": {'last_judge': local_time}})
     c_judge_queue.insert_one({'rid': rid, 'timestamp': time.time(), 'formated_time': time.strftime('%Y.%m.%d %H:%M'), 'code':code, 'size': size, 'status': '0', 'result': None, 'score': 0})
     return jsonify({'status':'200','message':'提交成功'})
